@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1599869792 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\main.c
+	<stdlib.h>
+	<stdio.h>
+	"menuCalculadora.h"
+	"obtenerDatos.h"
+
+1599869733 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\menucalculadora.h
+
+1599855769 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\obtenerdatos.h
+
+1599869800 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\menucalculadora.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"menuCalculadora.h"
+	"obtenerDatos.h"
+	"realizarOperaciones.h"
+	"mostrarDato.h"
+
+1599870024 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\obtenerdatos.c
+	<stdlib.h>
+	<stdio.h>
+
+1599870252 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\realizaroperaciones.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+
+1599870415 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\mostrardato.c
+	<stdlib.h>
+	<stdio.h>
+
+1599865061 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\realizaroperaciones.h
+
+1599865879 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\mostrardato.h
+
