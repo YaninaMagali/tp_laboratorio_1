@@ -5,4 +5,5 @@ float dividirNumeros(float primerOperador, float segundoOperador);
 float multiplicarNumeros(float primerOperando, float segundoOperando);
 float restarNumeros(float primerOperando, float segundoOperando);
 int factorial(float numeroACalcularFactor);
+float calcularFactorialFormula(float numeroACalcularFactor);
 #endif // REALIZAROPERACIONES_H_INCLUDED
