@@ -37,7 +37,7 @@ void mostrarResultadoFactorial(float operandoUno, char signo, int resultado)
 {
     if(resultado == 0 && signo == '!')
     {
-        printf("No se puede calcular el factorial del numero racional %.2f\n", operandoUno);
+        printf("No se puede calcular el factorial del numero %.2f\n", operandoUno);
     }
     else
     {
