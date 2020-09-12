@@ -36,3 +36,40 @@
 
 1599865879 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp1_calculadora\mostrardato.h
 
+1599869792 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\main.c
+	<stdlib.h>
+	<stdio.h>
+	"menuCalculadora.h"
+	"obtenerDatos.h"
+
+1599869733 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\menucalculadora.h
+
+1599855769 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\obtenerdatos.h
+
+1599870490 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\menucalculadora.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"menuCalculadora.h"
+	"obtenerDatos.h"
+	"realizarOperaciones.h"
+	"mostrarDato.h"
+
+1599865061 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.h
+
+1599865879 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\mostrardato.h
+
+1599935515 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\mostrardato.c
+	<stdlib.h>
+	<stdio.h>
+
+1599870024 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\obtenerdatos.c
+	<stdlib.h>
+	<stdio.h>
+
+1599936467 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+

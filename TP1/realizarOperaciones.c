@@ -85,18 +85,28 @@ int factorial(float numeroACalcularFactor)
     float resto;
 
     resto = fmod(numeroACalcularFactor, 1);
+    printf("resto %f", resto);
 
-    if(resto==0)
+    if(numeroACalcularFactor==0)
     {
-        for(factorial = numeroACalcularFactor; numeroACalcularFactor > 1 ; numeroACalcularFactor--)
-        {
-            factorial = factorial*(numeroACalcularFactor-1);
-        }
+        factorial = 1;
     }
     else
+    {
+        if(resto==0)
+        {
+            for(factorial = numeroACalcularFactor; numeroACalcularFactor > 1 ; numeroACalcularFactor--)
+            {
+                factorial = factorial*(numeroACalcularFactor-1);
+                printf("factorial es %d", factorial);
+            }
+        }
+        else
         {
             factorial = 0;
+        }
     }
+
 
     return factorial;
 
