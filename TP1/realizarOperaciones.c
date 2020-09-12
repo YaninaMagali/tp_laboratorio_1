@@ -79,27 +79,42 @@ float multiplicarNumeros(float primerOperando, float segundoOperando)
  * \return int Devuelve el fctorial del numero ingresado
  *
  */
+
+
+
 int factorial(float numeroACalcularFactor)
 {
     int factorial;
     float resto;
 
     resto = fmod(numeroACalcularFactor, 1);
-    printf("resto %f", resto);
 
     if(numeroACalcularFactor==0)
     {
         factorial = 1;
     }
+
     else
     {
         if(resto==0)
         {
-            for(factorial = numeroACalcularFactor; numeroACalcularFactor > 1 ; numeroACalcularFactor--)
+            if(numeroACalcularFactor < 0)
             {
-                factorial = factorial*(numeroACalcularFactor-1);
-                printf("factorial es %d", factorial);
+                numeroACalcularFactor = numeroACalcularFactor * -1;
+
+                for(factorial = numeroACalcularFactor; numeroACalcularFactor > 1 ; numeroACalcularFactor--)
+                {
+                    factorial = factorial*(numeroACalcularFactor-1);
+                }
             }
+            else
+            {
+                for(factorial = numeroACalcularFactor; numeroACalcularFactor > 1 ; numeroACalcularFactor--)
+                {
+                    factorial = factorial*(numeroACalcularFactor-1);
+                }
+            }
+
         }
         else
         {

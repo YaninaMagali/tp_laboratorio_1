@@ -56,11 +56,11 @@
 	"realizarOperaciones.h"
 	"mostrarDato.h"
 
-1599865061 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.h
+1599948961 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.h
 
 1599865879 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\mostrardato.h
 
-1599935515 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\mostrardato.c
+1599936539 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\mostrardato.c
 	<stdlib.h>
 	<stdio.h>
 
@@ -68,7 +68,7 @@
 	<stdlib.h>
 	<stdio.h>
 
-1599936467 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.c
+1599948802 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp1\realizaroperaciones.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
