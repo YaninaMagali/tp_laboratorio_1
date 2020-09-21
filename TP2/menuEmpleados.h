@@ -1,0 +1,6 @@
+#ifndef MENUEMPLEADOS_H_INCLUDED
+#define MENUEMPLEADOS_H_INCLUDED
+
+void menuEmpleados(void);
+
+#endif // MENUEMPLEADOS_H_INCLUDED

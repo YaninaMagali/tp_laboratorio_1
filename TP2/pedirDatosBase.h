@@ -1,0 +1,6 @@
+#ifndef PEDIRDATOSBASE_H_INCLUDED
+#define PEDIRDATOSBASE_H_INCLUDED
+
+int pedirEntero(char mensaje[]);
+
+#endif // PEDIRDATOSBASE_H_INCLUDED
