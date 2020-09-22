@@ -31,9 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="empleados.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="empleados.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="menuEmpleados.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menuEmpleados.h" />
+		<Unit filename="pedirDatosBase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pedirDatosBase.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
