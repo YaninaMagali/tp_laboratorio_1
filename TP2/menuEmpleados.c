@@ -11,13 +11,13 @@ void menuEmpleados(void)
 {
     int opcion;
     empleadoEst empleadosListado[T];//MODIFICAR TAMANIO ARRAY
-    int filaEnListaEmpleados;
+    int filaLibreEnListaEmpleados;
+    int ultimoId;
     int i;
 
-    filaEnListaEmpleados = 0;
+    ultimoId = 0;
 
     inicializarArrayComoVacio(empleadosListado, T);
-    printf("Fin del setting\n");
 
 
     do
@@ -26,37 +26,35 @@ void menuEmpleados(void)
 
         switch(opcion)
         {
-        case 1:
-            printf("Aca va el ALTA\n");
-            printf("Estadp esta vacio ANTES del igresar dato %d\n", empleadosListado[filaEnListaEmpleados].estaVacio);
-            empleadosListado[filaEnListaEmpleados] = ingresarEmpleado(empleadosListado[filaEnListaEmpleados]);
-            printf("Estadp esta vacio ANTES del cambio %d\n", empleadosListado[filaEnListaEmpleados].estaVacio);
-
-            empleadosListado[filaEnListaEmpleados].estaVacio = cambiarEstadoEstaVacio(empleadosListado[filaEnListaEmpleados]);
-            printf("Estadp esta vacio DESPx del cambio %d\n", empleadosListado[filaEnListaEmpleados].estaVacio);
-            filaEnListaEmpleados++;
-
+        case 1://ALTA
+            filaLibreEnListaEmpleados = buscarPrimerEspacioVacioEnListado(empleadosListado, T);
+            if(filaLibreEnListaEmpleados == -1 || filaLibreEnListaEmpleados == T)
+            {
+                printf("No hay mas lugar en el listado. Borra algun empleado para ingresar uno nuevo\n");
+            }
+            else
+            {
+                empleadosListado[filaLibreEnListaEmpleados] = ingresarEmpleado(empleadosListado[filaLibreEnListaEmpleados]);
+                ultimoId = generarId(ultimoId);
+                empleadosListado[filaLibreEnListaEmpleados].id = ultimoId;
+                //printf("nuevo id es %d ",generarId(ultimoId));
+                empleadosListado[filaLibreEnListaEmpleados].estaVacio = cambiarEstadoEstaVacio(empleadosListado[filaLibreEnListaEmpleados]);
+            }
             break;
-        case 2:
+        case 2://MOD
             printf("Aca va la MOD\n");
             break;
-        case 3:
+        case 3://BAJA
             printf("Aca va el BAJA\n");
+            borrarEmpleado(empleadosListado, T);
             break;
-        case 4:
-            printf("Aca va el LISTADO\n");
-
+        case 4://MOSTRAR
             for(i=0; i<T; i++)
             {
-                //mostrarEmpleado(empleadosListado[i]);
-                //printf("A ver si entra al for...\n");
-                printf("Estadp de esta vacio PRE IF es%d...\n", empleadosListado[i].estaVacio);
                 if(empleadosListado[i].estaVacio == 0)
                 {
-                    printf("A ver si entra al for...\n");
                     mostrarEmpleado(empleadosListado[i]);
                 }
-
             }
 
             break;

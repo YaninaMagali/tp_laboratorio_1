@@ -14,7 +14,11 @@ typedef struct
 empleadoEst ingresarEmpleado(empleadoEst empleadoData);
 void mostrarEmpleado(empleadoEst empleadoData);
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T);
-//void cambiarEstadoEstaVacio(empleadoEst empleadoData);
 int cambiarEstadoEstaVacio(empleadoEst empleadoData);
 int consultarEstadoEstaVacio(empleadoEst empleadoData);
+int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T);
+void borrarEmpleado(empleadoEst empleadoData[], int T);
+
+int generarId(int ultimoId);
+//int generarId(empleadoEst empleadoData[], int T);
 #endif // EMPLEADOS_H_INCLUDED

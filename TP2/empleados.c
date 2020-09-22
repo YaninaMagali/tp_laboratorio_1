@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "empleados.h"
+#include "pedirDatosBase.h"
 
 empleadoEst ingresarEmpleado(empleadoEst empleadoData)
-//void ingresarEmpleado(empleadoEst empleadoData)
 {
-    //empleadoEst empleadoData;
-
     printf("Ingresar nombre: ");
     fflush(stdin);
     scanf("%s",&empleadoData.nombre);
@@ -17,7 +15,6 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
     scanf("%f", &empleadoData.salario);
     printf("Ingresar sector: ");
     scanf("%d", &empleadoData.sector);
-    //empleadoData.estaVacio = consultarEstadoEstaVacio(empleadoData);
 
     return empleadoData;
 }
@@ -25,7 +22,7 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 void mostrarEmpleado(empleadoEst empleadoData)
 {
 
-    printf("%4s %8s %11.2f %13d\n", empleadoData.nombre, empleadoData.apellido, empleadoData.salario, empleadoData.sector);
+    printf("%1d %4s %8s %11.2f %13d\n", empleadoData.id, empleadoData.nombre, empleadoData.apellido, empleadoData.salario, empleadoData.sector);
 }
 
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
@@ -38,8 +35,6 @@ void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
     }
 }
 
-
-//void cambiarEstadoEstaVacio(empleadoEst empleadoData)
 int cambiarEstadoEstaVacio(empleadoEst empleadoData)
 {
     int estaVacioLocal;
@@ -68,4 +63,53 @@ int consultarEstadoEstaVacio(empleadoEst empleadoData)
         empleadoData.estaVacio = 0;
     }
     return estaVacio;
+}
+
+int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
+{
+    int i;
+
+    for(i = 0; i< T; i++)
+    {
+        if(empleadoData[i].estaVacio == 1 && i != T)
+        {
+            break;
+        }
+        if(i == T)
+        {
+            i = -1;
+        }
+    }
+    return i;
+}
+
+void borrarEmpleado(empleadoEst empleadoData[], int T)
+{
+    int i;
+    int idEmpleadoABorrar;
+
+    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar\n");
+
+    for(i = 0; i < T; i++)
+    {
+        if(empleadoData[i].id == idEmpleadoABorrar && empleadoData[i].estaVacio == 0)
+        {
+            empleadoData[i].estaVacio = cambiarEstadoEstaVacio(empleadoData[i]);
+            break;
+        }
+        else
+        {
+            printf("El id ingresado no existe\n");
+            break;
+        }
+    }
+}
+
+int generarId(int ultimoId)
+{
+    int idActual;
+
+    idActual = ultimoId + 1;
+
+    return idActual;
 }
