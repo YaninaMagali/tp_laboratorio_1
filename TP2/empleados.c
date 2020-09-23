@@ -99,7 +99,7 @@ void borrarEmpleado(empleadoEst empleadoData[], int T)
         }
         else
         {
-            printf("El id ingresado no existe\n");
+            printf("No hay empleado con id %d\n", idEmpleadoABorrar);
             break;
         }
     }
@@ -112,4 +112,25 @@ int generarId(int ultimoId)
     idActual = ultimoId + 1;
 
     return idActual;
+}
+
+
+void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
+{
+    int i;
+    int j;
+    empleadoEst aux;
+
+    for(i = 0; i < T; i++)
+    {
+        for(j = i+1; j < T; j++)
+        {
+            if(strcmp(empleadoData[i].nombre, empleadoData[j].nombre)>0)//criterio de ordenamiento
+            {
+                aux = empleadoData[i];
+                empleadoData[i] = empleadoData[j];
+                empleadoData[j] = aux;
+            }
+        }
+    }
 }

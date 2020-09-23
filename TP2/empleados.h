@@ -18,7 +18,7 @@ int cambiarEstadoEstaVacio(empleadoEst empleadoData);
 int consultarEstadoEstaVacio(empleadoEst empleadoData);
 int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T);
 void borrarEmpleado(empleadoEst empleadoData[], int T);
-
 int generarId(int ultimoId);
-//int generarId(empleadoEst empleadoData[], int T);
+
+void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T);
 #endif // EMPLEADOS_H_INCLUDED
