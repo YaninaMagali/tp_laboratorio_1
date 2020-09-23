@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "empleados.h"
 #include "pedirDatosBase.h"
 
@@ -8,11 +9,29 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
     printf("Ingresar nombre: ");
     fflush(stdin);
     scanf("%s",&empleadoData.nombre);
+    while(isalpha(empleadoData.nombre[0])==0){
+        printf("Error! Solo se pueden ingresar letras. Ingresar nombre: ");
+        fflush(stdin);
+        scanf("%s",&empleadoData.nombre);
+    }
+
+
     fflush(stdin);
     printf("Ingresar apellido: ");
     scanf("%s", &empleadoData.apellido);
+    while(isalpha(empleadoData.apellido[0])==0){
+        printf("Error! Solo se pueden ingresar letras. Ingresar nombre: ");
+        fflush(stdin);
+        scanf("%s",&empleadoData.apellido);
+    }
+
     printf("Ingresar salario: ");
     scanf("%f", &empleadoData.salario);
+    while(empleadoData.salario < 1){
+        printf("El salario debe ser un numero mayor a cero. Ingresar salario: ");
+        scanf("%f", &empleadoData.salario);
+    }
+
     printf("Ingresar sector: ");
     scanf("%d", &empleadoData.sector);
 
