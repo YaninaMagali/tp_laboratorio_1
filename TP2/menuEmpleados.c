@@ -37,7 +37,6 @@ void menuEmpleados(void)
                 empleadosListado[filaLibreEnListaEmpleados] = ingresarEmpleado(empleadosListado[filaLibreEnListaEmpleados]);
                 ultimoId = generarId(ultimoId);
                 empleadosListado[filaLibreEnListaEmpleados].id = ultimoId;
-                //printf("nuevo id es %d ",generarId(ultimoId));
                 empleadosListado[filaLibreEnListaEmpleados].estaVacio = cambiarEstadoEstaVacio(empleadosListado[filaLibreEnListaEmpleados]);
             }
             break;
@@ -46,14 +45,28 @@ void menuEmpleados(void)
             break;
         case 3://BAJA
             printf("Aca va el BAJA\n");
-            borrarEmpleado(empleadosListado, T);
+            if(ultimoId == 0)
+            {
+                printf("Todavia no se ingreso ningun empleado\n");
+            }
+            else
+            {
+                borrarEmpleado(empleadosListado, T);
+            }
+
             break;
         case 4://MOSTRAR
+            OrdenarEmpleadosPorNombre(empleadosListado,T);
             for(i=0; i<T; i++)
             {
                 if(empleadosListado[i].estaVacio == 0)
                 {
                     mostrarEmpleado(empleadosListado[i]);
+                }
+                else
+                {
+                    printf("No hay empleados para mostrar\n");
+                    break;
                 }
             }
 
