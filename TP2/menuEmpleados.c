@@ -42,6 +42,14 @@ void menuEmpleados(void)
             break;
         case 2://MOD
             printf("Aca va la MOD\n");
+            if(ultimoId == 0)
+            {
+                printf("Todavia no se ingreso ningun empleado\n");
+            }
+            else
+            {
+                modificarEmpleado(empleadosListado,T);
+            }
             break;
         case 3://BAJA
             printf("Aca va el BAJA\n");
@@ -56,22 +64,17 @@ void menuEmpleados(void)
 
             break;
         case 4://MOSTRAR
-            OrdenarEmpleadosPorNombre(empleadosListado,T);
-            for(i=0; i<T; i++)
+            if(ultimoId == 0)
             {
-                if(empleadosListado[i].estaVacio == 0)
-                {
-                    mostrarEmpleado(empleadosListado[i]);
-                }
-                else
-                {
-                    printf("No hay empleados para mostrar\n");
-                    break;
-                }
+                printf("No hay empleados ingresados en la lista\n");
             }
-
+            else
+            {
+                OrdenarEmpleadosPorNombre(empleadosListado,T);
+                mostrarEmpleado(empleadosListado, T);
+            }
             break;
-        }
+        }//Fin switch
     }
     while(opcion!=0);
 }

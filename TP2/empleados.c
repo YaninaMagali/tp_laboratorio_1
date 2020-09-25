@@ -6,24 +6,9 @@
 
 empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 {
-    printf("Ingresar nombre: ");
-    fflush(stdin);
-    scanf("%s",&empleadoData.nombre);
-    while(isalpha(empleadoData.nombre[0])==0){
-        printf("Error! Solo se pueden ingresar letras. Ingresar nombre: ");
-        fflush(stdin);
-        scanf("%s",&empleadoData.nombre);
-    }
+    obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras", empleadoData.nombre);
 
-
-    fflush(stdin);
-    printf("Ingresar apellido: ");
-    scanf("%s", &empleadoData.apellido);
-    while(isalpha(empleadoData.apellido[0])==0){
-        printf("Error! Solo se pueden ingresar letras. Ingresar nombre: ");
-        fflush(stdin);
-        scanf("%s",&empleadoData.apellido);
-    }
+    obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras", empleadoData.apellido);
 
     printf("Ingresar salario: ");
     scanf("%f", &empleadoData.salario);
@@ -38,10 +23,17 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
     return empleadoData;
 }
 
-void mostrarEmpleado(empleadoEst empleadoData)
+void mostrarEmpleado(empleadoEst empleadoData[], int T)
 {
+    int i;
+    for(i=0; i< T; i++)
+    {
+        if(empleadoData[i].estaVacio == 0)
+        {
+            printf("%1d %4s %8s %11.2f %13d\n", empleadoData[i].id, empleadoData[i].nombre, empleadoData[i].apellido, empleadoData[i].salario, empleadoData[i].sector);
+        }
 
-    printf("%1d %4s %8s %11.2f %13d\n", empleadoData.id, empleadoData.nombre, empleadoData.apellido, empleadoData.salario, empleadoData.sector);
+    }
 }
 
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
@@ -107,7 +99,7 @@ void borrarEmpleado(empleadoEst empleadoData[], int T)
     int i;
     int idEmpleadoABorrar;
 
-    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar\n");
+    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar:");
 
     for(i = 0; i < T; i++)
     {
@@ -153,3 +145,49 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
         }
     }
 }
+
+void modificarEmpleado(empleadoEst empleadoData[], int T)
+{
+    int i;
+    int idEmpleadoAModificar;
+    int opcionDatoAModificar;
+
+    idEmpleadoAModificar = pedirEntero("Ingresa el id del empleado que queres modificar: ");
+
+    for(i = 0; i < T; i++)
+    {
+        if(empleadoData[i].id == idEmpleadoAModificar && empleadoData[i].estaVacio == 0)
+        {
+
+            opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector 5. CANCELAR \n Elegi una opcion:");
+
+            switch(opcionDatoAModificar)
+            {
+            case 1:
+                obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa el nombre nuevamente: ", empleadoData[i].nombre);
+                printf("El nombre fue modificado exitosamente\n");
+                break;
+            case 2:
+                obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa el apellido nuevamente: ", empleadoData[i].apellido);
+                printf("El apellido fue modificado exitosamente\n");
+                break;
+            case 3:
+                printf("cambiar sueldo\n");
+                break;
+            case 4:
+                printf("Cambiar sector\n");
+                break;
+            case 5:
+                menuEmpleados();
+                break;
+            default:
+                printf("Opcion invalida\n");
+                break;
+            }
+        }
+
+    }
+}
+
+
+
