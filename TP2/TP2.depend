@@ -6,23 +6,23 @@
 
 1600637302 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.h
 
-1600637136 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
+1600994805 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
 	<stdio.h>
 	<stdlib.h>
 	"pedirDatosBase.h"
 
-1600637176 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
+1600994808 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
 
-1600896069 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
+1600994850 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	"empleados.h"
 	"pedirDatosBase.h"
 
-1600891701 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
+1600993025 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
 
-1600893114 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
+1600959826 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
 	<stdio.h>
 	<stdlib.h>
 	"menuEmpleados.h"

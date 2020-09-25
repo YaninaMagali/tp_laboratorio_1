@@ -12,7 +12,8 @@ typedef struct
 }empleadoEst;
 
 empleadoEst ingresarEmpleado(empleadoEst empleadoData);
-void mostrarEmpleado(empleadoEst empleadoData);
+//void mostrarEmpleado(empleadoEst empleadoData);
+void mostrarEmpleado(empleadoEst empleadoData[], int T);
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T);
 int cambiarEstadoEstaVacio(empleadoEst empleadoData);
 int consultarEstadoEstaVacio(empleadoEst empleadoData);
@@ -21,4 +22,6 @@ void borrarEmpleado(empleadoEst empleadoData[], int T);
 int generarId(int ultimoId);
 
 void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T);
+
+void modificarEmpleado(empleadoEst empleadoData[], int T);
 #endif // EMPLEADOS_H_INCLUDED
