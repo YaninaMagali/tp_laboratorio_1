@@ -6,27 +6,37 @@
 
 1600637302 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.h
 
-1600994805 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
+1601041246 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
 	<stdio.h>
 	<stdlib.h>
 	"pedirDatosBase.h"
+	"validarTipoDato.h"
 
-1600994808 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
+1601041292 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
 
-1600994850 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
+1601056711 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	<ctype.h>
 	"empleados.h"
 	"pedirDatosBase.h"
+	"menuEmpleados.h"
 
-1600993025 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
+1601056330 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
 
-1600959826 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
+1601056917 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
 	<stdio.h>
 	<stdlib.h>
 	"menuEmpleados.h"
 	"pedirDatosBase.h"
 	"empleados.h"
 	"menuEmpleados.h"
+
+1601040487 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
+1601040696 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.h
 
