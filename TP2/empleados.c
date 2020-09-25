@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include "empleados.h"
 #include "pedirDatosBase.h"
+#include "menuEmpleados.h"
 
 empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 {
-    obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras", empleadoData.nombre);
+    obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa nuevamente el nombre: ", empleadoData.nombre);
 
-    obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras", empleadoData.apellido);
+    obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa nuevamente el apellido: ", empleadoData.apellido);
 
-    printf("Ingresar salario: ");
-    scanf("%f", &empleadoData.salario);
+    empleadoData.salario = pedirNumeroFlotante("Ingresar salario: ");
     while(empleadoData.salario < 1){
-        printf("El salario debe ser un numero mayor a cero. Ingresar salario: ");
-        scanf("%f", &empleadoData.salario);
+        empleadoData.salario = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
     }
 
-    printf("Ingresar sector: ");
-    scanf("%d", &empleadoData.sector);
+    empleadoData.sector = pedirEntero("Ingresar sector: ");
+
 
     return empleadoData;
 }
+
 
 void mostrarEmpleado(empleadoEst empleadoData[], int T)
 {
@@ -32,9 +33,15 @@ void mostrarEmpleado(empleadoEst empleadoData[], int T)
         {
             printf("%1d %4s %8s %11.2f %13d\n", empleadoData[i].id, empleadoData[i].nombre, empleadoData[i].apellido, empleadoData[i].salario, empleadoData[i].sector);
         }
+//        else
+//        {
+//            printf("No hay datos para mostrar\n");
+//            break;
+//        }
 
     }
 }
+
 
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
 {
@@ -45,6 +52,7 @@ void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
         empleadoData[i].estaVacio = 1;
     }
 }
+
 
 int cambiarEstadoEstaVacio(empleadoEst empleadoData)
 {
@@ -61,6 +69,7 @@ int cambiarEstadoEstaVacio(empleadoEst empleadoData)
     return estaVacioLocal;
 }
 
+
 int consultarEstadoEstaVacio(empleadoEst empleadoData)
 {
     int estaVacio;
@@ -75,6 +84,7 @@ int consultarEstadoEstaVacio(empleadoEst empleadoData)
     }
     return estaVacio;
 }
+
 
 int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
 {
@@ -99,20 +109,21 @@ void borrarEmpleado(empleadoEst empleadoData[], int T)
     int i;
     int idEmpleadoABorrar;
 
-    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar:");
+    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar: ");
 
     for(i = 0; i < T; i++)
     {
         if(empleadoData[i].id == idEmpleadoABorrar && empleadoData[i].estaVacio == 0)
         {
             empleadoData[i].estaVacio = cambiarEstadoEstaVacio(empleadoData[i]);
+            printf("El empleado con id %d fue dado de baja exitosamente\n", idEmpleadoABorrar);
             break;
         }
-        else
-        {
-            printf("No hay empleado con id %d\n", idEmpleadoABorrar);
-            break;
-        }
+//        else
+//        {
+//            printf("No hay empleado con id %d\n", idEmpleadoABorrar);
+//            break;
+//        }
     }
 }
 
@@ -136,7 +147,7 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
     {
         for(j = i+1; j < T; j++)
         {
-            if(strcmp(empleadoData[i].nombre, empleadoData[j].nombre)>0)//criterio de ordenamiento
+            if(strcmp(empleadoData[i].apellido, empleadoData[j].apellido)>0)//criterio de ordenamiento
             {
                 aux = empleadoData[i];
                 empleadoData[i] = empleadoData[j];
@@ -145,6 +156,7 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
         }
     }
 }
+
 
 void modificarEmpleado(empleadoEst empleadoData[], int T)
 {
@@ -159,7 +171,7 @@ void modificarEmpleado(empleadoEst empleadoData[], int T)
         if(empleadoData[i].id == idEmpleadoAModificar && empleadoData[i].estaVacio == 0)
         {
 
-            opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector 5. CANCELAR \n Elegi una opcion:");
+            opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector\n 5. CANCELAR \n Elegi una opcion: ");
 
             switch(opcionDatoAModificar)
             {
@@ -172,10 +184,15 @@ void modificarEmpleado(empleadoEst empleadoData[], int T)
                 printf("El apellido fue modificado exitosamente\n");
                 break;
             case 3:
-                printf("cambiar sueldo\n");
+                empleadoData[i].salario = pedirNumeroFlotante("Ingresar salario: ");
+                while(empleadoData[i].salario < 1){
+                    empleadoData[i].salario = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
+                }
+                printf("El salario fue modificado exitosamente\n");
                 break;
             case 4:
-                printf("Cambiar sector\n");
+                empleadoData[i].sector = pedirEntero("Ingresar sector: ");
+                printf("El sector fue modificado exitosamente\n");
                 break;
             case 5:
                 menuEmpleados();
@@ -184,10 +201,56 @@ void modificarEmpleado(empleadoEst empleadoData[], int T)
                 printf("Opcion invalida\n");
                 break;
             }
+        return empleadoData;
         }
+//        else
+//        {
+//            printf("No hay empleado con id %d\n", idEmpleadoAModificar);
+//            break;
+//        }
 
     }
 }
 
 
+float sumarSalarios(empleadoEst empleadoData[], int T)
+{
+    int i;
+    float sumaSalarios;
 
+    for(i=0; i<T;i++)
+    {
+        if(empleadoData[i].estaVacio == 0)
+        {
+            sumaSalarios = sumaSalarios + empleadoData[i].salario;
+        }
+    }
+    return sumaSalarios;
+}
+
+float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios)
+{
+    float promedioSalarios;
+
+    promedioSalarios = sumaSalarios / contadorEmpleados;
+
+    return promedioSalarios;
+}
+
+
+int contarEmpleados(empleadoEst empleadoData[], int T)
+{
+    int i;
+    int cantidadEmpleados;
+
+    cantidadEmpleados = 0;
+
+    for(i=0; i<T;i++)
+    {
+        if(empleadoData[i].estaVacio==0)
+        {
+            cantidadEmpleados++;
+        }
+    }
+    return cantidadEmpleados;
+}

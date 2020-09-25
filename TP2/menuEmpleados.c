@@ -13,7 +13,9 @@ void menuEmpleados(void)
     empleadoEst empleadosListado[T];//MODIFICAR TAMANIO ARRAY
     int filaLibreEnListaEmpleados;
     int ultimoId;
-    int i;
+    float sumaSalarios;
+    int cantidadEmpleados;
+    float promedioSalarios;
 
     ultimoId = 0;
 
@@ -52,7 +54,6 @@ void menuEmpleados(void)
             }
             break;
         case 3://BAJA
-            printf("Aca va el BAJA\n");
             if(ultimoId == 0)
             {
                 printf("Todavia no se ingreso ningun empleado\n");
@@ -61,7 +62,6 @@ void menuEmpleados(void)
             {
                 borrarEmpleado(empleadosListado, T);
             }
-
             break;
         case 4://MOSTRAR
             if(ultimoId == 0)
@@ -70,8 +70,14 @@ void menuEmpleados(void)
             }
             else
             {
+                sumaSalarios = sumarSalarios(empleadosListado, T);
+                cantidadEmpleados = contarEmpleados(empleadosListado, T);
+                promedioSalarios = calcularPromedioSalarios(cantidadEmpleados, sumaSalarios);
                 OrdenarEmpleadosPorNombre(empleadosListado,T);
                 mostrarEmpleado(empleadosListado, T);
+                printf("La suma de los salarios es %.2f\n", sumaSalarios);
+                printf("El promedio de los salarios es %.2f\n", promedioSalarios);
+
             }
             break;
         }//Fin switch

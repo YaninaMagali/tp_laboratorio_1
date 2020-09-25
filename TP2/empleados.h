@@ -24,4 +24,8 @@ int generarId(int ultimoId);
 void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T);
 
 void modificarEmpleado(empleadoEst empleadoData[], int T);
+
+float sumarSalarios(empleadoEst empleadoData[], int T);
+float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios);
+int contarEmpleados(empleadoEst empleadoData[], int T);
 #endif // EMPLEADOS_H_INCLUDED
