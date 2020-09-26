@@ -25,7 +25,7 @@ int validarSiEsChar(char cadena[])
     int esAlpha;
     int T;
 
-    T = strlen(cadena);
+    T = strlen(cadena)-1;
 
     for(i=0; i< T; i++)
     {
@@ -38,7 +38,6 @@ int validarSiEsChar(char cadena[])
         {
             esAlpha = 1;
         }
-
     }
     return esAlpha;
 }

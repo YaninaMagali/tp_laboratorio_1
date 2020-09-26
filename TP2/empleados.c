@@ -5,12 +5,15 @@
 #include "empleados.h"
 #include "pedirDatosBase.h"
 #include "menuEmpleados.h"
+#define TAMANIO_CADENA 50
 
 empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 {
-    obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa nuevamente el nombre: ", empleadoData.nombre);
+    obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData.nombre, TAMANIO_CADENA);
+    remmplazarSaltoPorEspacio(empleadoData.nombre);
 
-    obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa nuevamente el apellido: ", empleadoData.apellido);
+    obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras: ", empleadoData.apellido, TAMANIO_CADENA);
+    remmplazarSaltoPorEspacio(empleadoData.apellido);
 
     empleadoData.salario = pedirNumeroFlotante("Ingresar salario: ");
     while(empleadoData.salario < 1){
@@ -18,7 +21,6 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
     }
 
     empleadoData.sector = pedirEntero("Ingresar sector: ");
-
 
     return empleadoData;
 }
@@ -158,6 +160,9 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
 }
 
 
+// int buscarEmpleadoEnLista(empleadoEst empleadoData[], int T)
+
+
 void modificarEmpleado(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -176,11 +181,13 @@ void modificarEmpleado(empleadoEst empleadoData[], int T)
             switch(opcionDatoAModificar)
             {
             case 1:
-                obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa el nombre nuevamente: ", empleadoData[i].nombre);
+                obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData.nombre, TAMANIO_CADENA);
+                remmplazarSaltoPorEspacio(empleadoData.nombre);
                 printf("El nombre fue modificado exitosamente\n");
                 break;
             case 2:
-                obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresa el apellido nuevamente: ", empleadoData[i].apellido);
+                obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar apellido nuevamente: ", empleadoData.apellido, TAMANIO_CADENA);
+                remmplazarSaltoPorEspacio(empleadoData.apellido);
                 printf("El apellido fue modificado exitosamente\n");
                 break;
             case 3:

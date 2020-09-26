@@ -43,10 +43,9 @@ void menuEmpleados(void)
             }
             break;
         case 2://MOD
-            printf("Aca va la MOD\n");
             if(ultimoId == 0)
             {
-                printf("Todavia no se ingreso ningun empleado\n");
+                printf("Todavia no ingresaste ningun empleado\n");
             }
             else
             {
@@ -56,7 +55,7 @@ void menuEmpleados(void)
         case 3://BAJA
             if(ultimoId == 0)
             {
-                printf("Todavia no se ingreso ningun empleado\n");
+                printf("Todavia no ingresaste ningun empleado\n");
             }
             else
             {
@@ -66,7 +65,7 @@ void menuEmpleados(void)
         case 4://MOSTRAR
             if(ultimoId == 0)
             {
-                printf("No hay empleados ingresados en la lista\n");
+                printf("Todavia no ingresaste ningun empleado\n");
             }
             else
             {

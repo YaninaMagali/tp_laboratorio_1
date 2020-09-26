@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pedirDatosBase.h" />
+		<Unit filename="validarTipoDato.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="validarTipoDato.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
