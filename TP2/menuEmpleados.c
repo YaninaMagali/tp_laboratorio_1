@@ -14,6 +14,7 @@ void menuEmpleados(void)
     int filaLibreEnListaEmpleados;
     int ultimoId;
     int idEmpleadoABorrarModificar;
+    int indiceEnArray;
     float sumaSalarios;
     int cantidadEmpleados;
     float promedioSalarios;
@@ -53,13 +54,14 @@ void menuEmpleados(void)
             else
             {
                 idEmpleadoABorrarModificar = pedirIdUsuarioModificar();
-                if(buscarIndiceEnArray(empleadosListado, T, idEmpleadoABorrarModificar) == -1)
+                indiceEnArray = buscarIndiceEnArrayPorIdEmpleado(empleadosListado, T, idEmpleadoABorrarModificar);
+                if( indiceEnArray == -1)
                 {
                     printf("No se encontro el empleado en el listado\n");
                 }
                 else
                 {
-                    modificarEmpleado(empleadosListado, idEmpleadoABorrarModificar);
+                    modificarEmpleado(empleadosListado, indiceEnArray);
                 }
             }
             break;
@@ -71,13 +73,14 @@ void menuEmpleados(void)
             else
             {
                 idEmpleadoABorrarModificar = pedirIdUsuarioModificar();
-                if(buscarIndiceEnArray(empleadosListado, T, idEmpleadoABorrarModificar) == -1)
+                indiceEnArray = buscarIndiceEnArrayPorIdEmpleado(empleadosListado, T, idEmpleadoABorrarModificar);
+                if(buscarIndiceEnArrayPorIdEmpleado(empleadosListado, T, idEmpleadoABorrarModificar) == -1)
                 {
                     printf("No se encontro el empleado en el listado\n");
                 }
                 else
                 {
-                    borrarEmpleado(empleadosListado, idEmpleadoABorrarModificar);
+                    borrarEmpleado(empleadosListado, indiceEnArray);
                 }
             }
             break;

@@ -57,3 +57,24 @@ char remmplazarSaltoPorEspacio(char string[])
     }
     return string[i];
 }
+
+
+int confirmarAccionUsuario(void)
+{
+    int continuar;
+    char respuesta;
+
+    printf("Para continuar ingresar S, para cancelar presionar cualquier tecla \n");
+    fflush(stdin);
+    scanf("%c", &respuesta);
+
+    if(respuesta == 's' || respuesta == 'S')
+    {
+        continuar = 1;
+    }
+    else
+    {
+        continuar = 0;
+    }
+    return continuar;
+}
