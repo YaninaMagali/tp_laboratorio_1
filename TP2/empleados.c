@@ -7,6 +7,12 @@
 #include "menuEmpleados.h"
 #define TAMANIO_CADENA 50
 
+/** \brief - Pide al usuario el ingreso de los datos de un empleado
+ *
+ * \param empleadoData empleadoEst - Recibe un tipo empleadoEst donde se van a guardar los datos ingresados
+ * \return empleadoEst - Devuelve la informacion ingresada por teclado
+ *
+ */
 empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 {
     obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData.nombre, TAMANIO_CADENA);
@@ -28,6 +34,13 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 }
 
 
+/** \brief - Recorre un listado de empleados y si no estan dados de baja los muestra
+ *
+ * \param empleadoData[] empleadoEst - Recibe el listado
+ * \param T int - Recibe el tamanio del listado
+ * \return void - No devuelve nada
+ *
+ */
 void mostrarEmpleado(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -41,6 +54,13 @@ void mostrarEmpleado(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Recorre un listado de empleados, y los inicializa como vacio
+ *
+ * \param empleadoData[] empleadoEst- Recibe el listado
+ * \param T int  Recibe el tamanio del listado
+ * \return void - No devuelve nada
+ *
+ */
 void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -52,6 +72,12 @@ void inicializarArrayComoVacio(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Cambia el valor de estaVacio del empleado. Si esta vacio es 1, lo cambia a 0 y viceversa.
+ *
+ * \param empleadoData empleadoEst - Recibe un empleado del listado de empleados.
+ * \return int - Devuelve el nuevo valor de estaVacio
+ *
+ */
 int cambiarEstadoEstaVacio(empleadoEst empleadoData)
 {
     int estaVacioLocal;
@@ -68,6 +94,12 @@ int cambiarEstadoEstaVacio(empleadoEst empleadoData)
 }
 
 
+/** \brief - Chequea el estado estaVacio del empleado recibido
+ *
+ * \param empleadoData empleadoEst - Recibe una fila del listado de empleados.
+ * \return int - Devuelve el valor estaVacio actual del empleado
+ *
+ */
 int consultarEstadoEstaVacio(empleadoEst empleadoData)
 {
     int estaVacio;
@@ -84,6 +116,13 @@ int consultarEstadoEstaVacio(empleadoEst empleadoData)
 }
 
 
+/** \brief Devuelve la posicion dentro del array cuyo valor estaVacio es 1
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int - Recibe el tamanio del array
+ * \return int - Devuelve el indice del primer valor vacio que encuentra
+ *
+ */
 int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -103,6 +142,13 @@ int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Realiza una baja logica al cambiar el estaVacio 0 por estaVacio 1
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array lista de empleados
+ * \param indiceEnArrayEmpleadoAModificar int - Recibe el indice del listado del registro a eliminar
+ * \return void - No devuelve nada
+ *
+ */
 void borrarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
 {
 
@@ -120,6 +166,12 @@ void borrarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModifi
 }
 
 
+/** \brief - Genera ids de forma incremental
+ *
+ * \param ultimoId int - Recibe el ultimo id generado
+ * \return int - Devuelve el siguiente id
+ *
+ */
 int generarId(int ultimoId)
 {
     int idActual;
@@ -130,6 +182,13 @@ int generarId(int ultimoId)
 }
 
 
+/** \brief - Ordena el listado por nombre y sector
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int - Recibe el tamanio del array
+ * \return void - No devuelve nada
+ *
+ */
 void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -160,6 +219,14 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Busca un empleado que no este dado de baja en el listado por id
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int - Recibe el tamanio del array
+ * \param idEmpleado int - Recibe el id del empleado que se quiere buscar
+ * \return int - Si encuentra el id en el listado devuelve 1, sino 0.
+ *
+ */
 int buscarEmpleadoEnListaPorId(empleadoEst empleadoData[], int T, int idEmpleado)
 {
     int i;
@@ -180,6 +247,12 @@ int buscarEmpleadoEnListaPorId(empleadoEst empleadoData[], int T, int idEmpleado
 }
 
 
+/** \brief - Pide al usuario que ingerse por teclado el id del empleado que quiere modificar o borrar
+ *
+ * \param void - No recibe parametros
+ * \return int - Devuelve el id del empleado ingresado por teclado
+ *
+ */
 int pedirIdUsuarioModificar(void)
 {
     int idEmpleadoAModificar;
@@ -190,6 +263,14 @@ int pedirIdUsuarioModificar(void)
 }
 
 
+/** \brief - Busca el indice del array donde esta almacenado el id empleado
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int - Recibe el tamanio del array
+ * \param idEmpleadoAModificar int - Recibe el id cuya posicion en el listado se quiere obtener
+ * \return int - Devuelve la posicion del empleado en el array. Si no lo encuentra o esta dado de baja devuelve -1
+ *
+ */
 int buscarIndiceEnArrayPorIdEmpleado(empleadoEst empleadoData[], int T, int idEmpleadoAModificar)
 {
     int i;
@@ -211,6 +292,13 @@ int buscarIndiceEnArrayPorIdEmpleado(empleadoEst empleadoData[], int T, int idEm
 }
 
 
+/** \brief - Permite al usuario modificar uno de los datos del empleado
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado empleados
+ * \param indiceEnArrayEmpleadoAModificar int - Recibe la posicion dentro del array del empleado que se quiere modificar
+ * \return void - No devuelve nada
+ *
+ */
 void modificarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
 {
     int opcionDatoAModificar;
@@ -283,6 +371,13 @@ void modificarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAMod
 }
 
 
+/** \brief - Suma los salarios de todos los empleados del listado. No tiene en cuenta aquellos dados de baja logicamente
+ *
+ * \param empleadoData[] empleadoEst - Recibe el listado de los empleados
+ * \param T int - Recibe el tamanio del listado
+ * \return float - Devuelve la suma de los salarios
+ *
+ */
 float sumarSalarios(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -301,6 +396,13 @@ float sumarSalarios(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Calcula el promedio de los salarios de todos los empleados del listado. No tiene en cuenta aquellos dados de baja logicamente
+ *
+ * \param contadorEmpleados float - Recibe la cantidad de empleados sin tener en cuenta los dados de baja
+ * \param sumaSalarios float - Recibe la suma de los salarios sin tener en cuenta los dados de baja
+ * \return float - Devuelve el promedio
+ *
+ */
 float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios)
 {
     float promedioSalarios;
@@ -313,6 +415,13 @@ float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios)
 }
 
 
+/** \brief - Cuenta la cantidad de empleados del listado sin tener en cuenta los dados de baja
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int - Recibe el tamanio del array
+ * \return int - Devuelve la cantidad de empleados
+ *
+ */
 int contarEmpleados(empleadoEst empleadoData[], int T)
 {
     int i;
@@ -331,6 +440,14 @@ int contarEmpleados(empleadoEst empleadoData[], int T)
 }
 
 
+/** \brief - Cuenta la cantidad de empleados que superan el sueldo promedio
+ *
+ * \param empleadoData[] empleadoEst - Recibe el array listado de empleados
+ * \param T int -  Recibe el tamanio del array listado de empleados
+ * \param salarioPromedio float - Recibe el salario  promedio
+ * \return int - Devuelve la cantidad de empleados que superan el sueldo promedio
+ *
+ */
 int contarEmpleadosSuperanSueldoPromedio(empleadoEst empleadoData[], int T, float salarioPromedio)
 {
     int i;
@@ -351,6 +468,12 @@ int contarEmpleadosSuperanSueldoPromedio(empleadoEst empleadoData[], int T, floa
 }
 
 
+/** \brief - Pone en mayuscula la primer letra de la cadena de caracteres
+ *
+ * \param cadena[] char - Recibe una cadena
+ * \return void - No devuelve nada
+ *
+ */
 void formatearNombrePropio(char cadena[])
 {
     strlwr(cadena);

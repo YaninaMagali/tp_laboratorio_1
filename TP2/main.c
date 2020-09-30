@@ -4,8 +4,6 @@
 
 int main()
 {
-    printf("Hello world!\n");
-
     menuEmpleados();
     return 0;
 }

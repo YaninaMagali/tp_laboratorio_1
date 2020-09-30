@@ -4,6 +4,12 @@
 #include "pedirDatosBase.h"
 #include "validarTipoDato.h"
 
+/** \brief Pide al usuario que ingrese un numero por teclado
+ *
+ * \param mensaje[] char - Recibe el mensaje para mostrar al usuario
+ * \return int - Devuelve el numero ingresado por el usuario
+ *
+ */
 int pedirEntero(char mensaje[])
  {
      int entero;
@@ -20,6 +26,15 @@ int pedirEntero(char mensaje[])
  }
 
 
+/** \brief Pide al usuario que ingrese un numero por teclado
+ *
+ * \param msj[] char - Recibe el mensaje para mostrar al usuario
+ * \param mensajeError[] char - Recibe el mensaje de error para mostrar al usuario
+ * \param cadena[] char - Recibe la posicion de la cadena donde se va a almacenar el texto ingresado por teclado
+ * \param TAMANIO_CADENA int - Recibe el tamanio de la cadena
+ * \return void - No devuelve nada
+ *
+ */
 void obtenerCadena(char msj[], char mensajeError[], char cadena[], int TAMANIO_CADENA)
 {
     printf(msj);
@@ -34,6 +49,12 @@ void obtenerCadena(char msj[], char mensajeError[], char cadena[], int TAMANIO_C
 }
 
 
+/** \brief - Pide al usuario que ingrese un numero por teclado
+ *
+ * \param mensaje[] char - Recibe el mensaje para mostrar al usuario
+ * \return float - Devuelve el numero ingresado por teclado
+ *
+ */
 float pedirNumeroFlotante(char mensaje[])
 {
     float numeroIngresado;
@@ -45,6 +66,12 @@ float pedirNumeroFlotante(char mensaje[])
 }
 
 
+/** \brief - Reemplaza saltos de linea por espacios
+ *
+ * \param string[] char - Recibe una cadena de caracteres
+ * \return char - Devuelve la cadena con espacios en lugar de saltos
+ *
+ */
 char remmplazarSaltoPorEspacio(char string[])
 {
     int i;
@@ -59,6 +86,12 @@ char remmplazarSaltoPorEspacio(char string[])
 }
 
 
+/** \brief - Pide al usuario confirmacion para ejecutar una accion
+ *
+ * \param void - No recibe nada
+ * \return int - Si el usuario confirma, devuelve 1, sino un 0
+ *
+ */
 int confirmarAccionUsuario(void)
 {
     int continuar;

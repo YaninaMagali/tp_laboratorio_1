@@ -25,6 +25,12 @@ int validarSiEsDigitoPositivo(char cadena[])
     return esDigito;
 }
 
+/** \brief valida que en la cadena ingresada este compuesta unicamente por letras
+ *
+ * \param cadena[] char - Recibe un array de char
+ * \return int - Devuelve un 0 cuando encuentra un dato distinto de letra, y un 1 si es letra
+ *
+ */
 int validarSiEsChar(char cadena[])
 {
     int i;
