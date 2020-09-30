@@ -62,7 +62,6 @@ void menuEmpleados(void)
                     modificarEmpleado(empleadosListado, idEmpleadoABorrarModificar);
                 }
             }
-
             break;
         case 3://BAJA
             if(ultimoId == 0)
