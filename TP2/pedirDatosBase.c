@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "pedirDatosBase.h"
 #include "validarTipoDato.h"
 
@@ -9,6 +10,11 @@ int pedirEntero(char mensaje[])
 
      printf(mensaje);
      scanf("%d", &entero);
+     while(isdigit(entero)==1)
+     {
+        printf(mensaje);
+        scanf("%d", &entero);
+     }
 
      return entero;
  }

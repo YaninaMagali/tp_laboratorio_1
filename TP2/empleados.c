@@ -11,9 +11,11 @@ empleadoEst ingresarEmpleado(empleadoEst empleadoData)
 {
     obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData.nombre, TAMANIO_CADENA);
     remmplazarSaltoPorEspacio(empleadoData.nombre);
+    formatearNombrePropio(empleadoData.nombre);
 
     obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras: ", empleadoData.apellido, TAMANIO_CADENA);
     remmplazarSaltoPorEspacio(empleadoData.apellido);
+    formatearNombrePropio(empleadoData.apellido);
 
     empleadoData.salario = pedirNumeroFlotante("Ingresar salario: ");
     while(empleadoData.salario < 1){
@@ -35,12 +37,6 @@ void mostrarEmpleado(empleadoEst empleadoData[], int T)
         {
             printf("%1d %4s %8s %11.2f %13d\n", empleadoData[i].id, empleadoData[i].nombre, empleadoData[i].apellido, empleadoData[i].salario, empleadoData[i].sector);
         }
-//        else
-//        {
-//            printf("No hay datos para mostrar\n");
-//            break;
-//        }
-
     }
 }
 
@@ -106,27 +102,12 @@ int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
     return i;
 }
 
-void borrarEmpleado(empleadoEst empleadoData[], int T)
+void borrarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
 {
-    int i;
-    int idEmpleadoABorrar;
 
-    idEmpleadoABorrar = pedirEntero("Ingresa el id del empleado que queres eliminar: ");
+    empleadoData[indiceEnArrayEmpleadoAModificar].estaVacio = cambiarEstadoEstaVacio(empleadoData[indiceEnArrayEmpleadoAModificar]);
+    printf("El empleado con id %d fue dado de baja exitosamente\n", indiceEnArrayEmpleadoAModificar);
 
-    for(i = 0; i < T; i++)
-    {
-        if(empleadoData[i].id == idEmpleadoABorrar && empleadoData[i].estaVacio == 0)
-        {
-            empleadoData[i].estaVacio = cambiarEstadoEstaVacio(empleadoData[i]);
-            printf("El empleado con id %d fue dado de baja exitosamente\n", idEmpleadoABorrar);
-            break;
-        }
-//        else
-//        {
-//            printf("No hay empleado con id %d\n", idEmpleadoABorrar);
-//            break;
-//        }
-    }
 }
 
 int generarId(int ultimoId)
@@ -160,62 +141,97 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
 }
 
 
-// int buscarEmpleadoEnLista(empleadoEst empleadoData[], int T)
-
-
-void modificarEmpleado(empleadoEst empleadoData[], int T)
+int buscarEmpleadoEnListaPorId(empleadoEst empleadoData[], int T, int idEmpleado)
 {
     int i;
+    int resultadoBusqueda;
+
+    for(i = 0; i < T; i++)
+    {
+        if(empleadoData[i].id == idEmpleado && empleadoData[i].estaVacio == 0)
+        {
+            resultadoBusqueda = 1;
+        }
+        else
+        {
+            resultadoBusqueda = 0;
+        }
+    }
+    return resultadoBusqueda;
+}
+
+
+int pedirIdUsuarioModificar(void)
+{
     int idEmpleadoAModificar;
-    int opcionDatoAModificar;
 
     idEmpleadoAModificar = pedirEntero("Ingresa el id del empleado que queres modificar: ");
+
+    return idEmpleadoAModificar;
+}
+
+int buscarIndiceEnArray(empleadoEst empleadoData[], int T, int idEmpleadoAModificar)
+{
+    int i;
+    int indice;
 
     for(i = 0; i < T; i++)
     {
         if(empleadoData[i].id == idEmpleadoAModificar && empleadoData[i].estaVacio == 0)
         {
-
-            opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector\n 5. CANCELAR \n Elegi una opcion: ");
-
-            switch(opcionDatoAModificar)
-            {
-            case 1:
-                obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData.nombre, TAMANIO_CADENA);
-                remmplazarSaltoPorEspacio(empleadoData.nombre);
-                printf("El nombre fue modificado exitosamente\n");
-                break;
-            case 2:
-                obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar apellido nuevamente: ", empleadoData.apellido, TAMANIO_CADENA);
-                remmplazarSaltoPorEspacio(empleadoData.apellido);
-                printf("El apellido fue modificado exitosamente\n");
-                break;
-            case 3:
-                empleadoData[i].salario = pedirNumeroFlotante("Ingresar salario: ");
-                while(empleadoData[i].salario < 1){
-                    empleadoData[i].salario = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
-                }
-                printf("El salario fue modificado exitosamente\n");
-                break;
-            case 4:
-                empleadoData[i].sector = pedirEntero("Ingresar sector: ");
-                printf("El sector fue modificado exitosamente\n");
-                break;
-            case 5:
-                menuEmpleados();
-                break;
-            default:
-                printf("Opcion invalida\n");
-                break;
-            }
-        return empleadoData;
+            indice = i;
+            break;
         }
-//        else
-//        {
-//            printf("No hay empleado con id %d\n", idEmpleadoAModificar);
-//            break;
-//        }
+        else
+        {
+            indice = -1;
+        }
+    }
+    return indice;
+}
 
+void modificarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
+{
+    int opcionDatoAModificar;
+
+//    for(i = 0; i < T; i++)
+//    {
+//        if(empleadoData[i].id == idEmpleadoAModificar && empleadoData[i].estaVacio == 0)
+//        {
+
+    opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector\n 5. CANCELAR \n Elegi una opcion: ");
+
+    switch(opcionDatoAModificar)
+    {
+    case 1:
+        obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData[indiceEnArrayEmpleadoAModificar].nombre, TAMANIO_CADENA);
+        remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
+        formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
+        printf("El nombre fue modificado exitosamente\n");
+        break;
+    case 2:
+        obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar apellido nuevamente: ", empleadoData[indiceEnArrayEmpleadoAModificar].apellido, TAMANIO_CADENA);
+        remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
+        formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
+        printf("El apellido fue modificado exitosamente\n");
+        break;
+    case 3:
+        empleadoData[indiceEnArrayEmpleadoAModificar].salario = pedirNumeroFlotante("Ingresar salario: ");
+        while(empleadoData[indiceEnArrayEmpleadoAModificar].salario < 1){
+            empleadoData[indiceEnArrayEmpleadoAModificar].salario = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
+        }
+        printf("El salario fue modificado exitosamente\n");
+        break;
+    case 4:
+        empleadoData[indiceEnArrayEmpleadoAModificar].sector = pedirEntero("Ingresar sector: ");
+        printf("El sector fue modificado exitosamente\n");
+        break;
+    case 5:
+        menuEmpleados();
+        break;
+    default:
+        printf("Opcion invalida\n");
+        break;
     }
 }
 
@@ -224,6 +240,8 @@ float sumarSalarios(empleadoEst empleadoData[], int T)
 {
     int i;
     float sumaSalarios;
+
+    sumaSalarios = 0;
 
     for(i=0; i<T;i++)
     {
@@ -238,6 +256,8 @@ float sumarSalarios(empleadoEst empleadoData[], int T)
 float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios)
 {
     float promedioSalarios;
+
+    promedioSalarios = 0;
 
     promedioSalarios = sumaSalarios / contadorEmpleados;
 
@@ -261,3 +281,29 @@ int contarEmpleados(empleadoEst empleadoData[], int T)
     }
     return cantidadEmpleados;
 }
+
+int contarEmpleadosSuperanSueldoPromedio(empleadoEst empleadoData[], int T, float salarioPromedio)
+{
+    int i;
+    int contador;
+
+    contador = 0;
+
+    for(i=0; i<T;i++)
+    {
+        if(empleadoData[i].estaVacio==0 && empleadoData[i].salario >= salarioPromedio)
+        {
+            contador++;
+        }
+    }
+
+    return contador;
+
+}
+
+
+void formatearNombrePropio(char cadena[])
+{
+    strlwr(cadena);
+    cadena[0] = toupper(cadena[0]);
+}//
