@@ -28,6 +28,6 @@ void formatearNombrePropio(char cadena[]);
 int buscarEmpleadoEnListaPorId(empleadoEst empleadoData[], int T, int idEmpleado);
 int pedirIdUsuarioModificar(void);
 void modificarEmpleado(empleadoEst empleadoData[], int idEmpleadoAModificar);
-int buscarIndiceEnArray(empleadoEst empleadoData[], int T, int idEmpleadoAModificar);
+int buscarIndiceEnArrayPorIdEmpleado(empleadoEst empleadoData[], int T, int idEmpleadoAModificar);
 void borrarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar);
 #endif // EMPLEADOS_H_INCLUDED

@@ -102,13 +102,23 @@ int buscarPrimerEspacioVacioEnListado(empleadoEst empleadoData[], int T)
     return i;
 }
 
+
 void borrarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
 {
 
-    empleadoData[indiceEnArrayEmpleadoAModificar].estaVacio = cambiarEstadoEstaVacio(empleadoData[indiceEnArrayEmpleadoAModificar]);
-    printf("El empleado con id %d fue dado de baja exitosamente\n", indiceEnArrayEmpleadoAModificar);
+    if(confirmarAccionUsuario()== 1)
+    {
+        empleadoData[indiceEnArrayEmpleadoAModificar].estaVacio = cambiarEstadoEstaVacio(empleadoData[indiceEnArrayEmpleadoAModificar]);
+        printf("El empleado fue dado de baja exitosamente\n");
+    }
+    else
+    {
+       printf("Se cancelo la operacion");
+    }
+
 
 }
+
 
 int generarId(int ultimoId)
 {
@@ -174,12 +184,13 @@ int pedirIdUsuarioModificar(void)
 {
     int idEmpleadoAModificar;
 
-    idEmpleadoAModificar = pedirEntero("Ingresa el id del empleado que queres modificar: ");
+    idEmpleadoAModificar = pedirEntero("Ingresa el id del empleado que queres modificar o eliminar: ");
 
     return idEmpleadoAModificar;
 }
 
-int buscarIndiceEnArray(empleadoEst empleadoData[], int T, int idEmpleadoAModificar)
+
+int buscarIndiceEnArrayPorIdEmpleado(empleadoEst empleadoData[], int T, int idEmpleadoAModificar)
 {
     int i;
     int indice;
@@ -199,41 +210,68 @@ int buscarIndiceEnArray(empleadoEst empleadoData[], int T, int idEmpleadoAModifi
     return indice;
 }
 
+
 void modificarEmpleado(empleadoEst empleadoData[], int indiceEnArrayEmpleadoAModificar)
 {
     int opcionDatoAModificar;
-
-//    for(i = 0; i < T; i++)
-//    {
-//        if(empleadoData[i].id == idEmpleadoAModificar && empleadoData[i].estaVacio == 0)
-//        {
+    char aux[TAMANIO_CADENA];
+    int intAux;
+    float floatAux;
 
     opcionDatoAModificar = pedirEntero(" 1. Modificar el nombre \n 2. Modificar apellido\n 3. Modificar salario\n 4. Modificar sector\n 5. CANCELAR \n Elegi una opcion: ");
 
     switch(opcionDatoAModificar)
     {
     case 1:
-        obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", empleadoData[indiceEnArrayEmpleadoAModificar].nombre, TAMANIO_CADENA);
-        remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
-        formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
-        printf("El nombre fue modificado exitosamente\n");
+        obtenerCadena("Ingresa el nombre del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar nombre nuevamente: ", aux, TAMANIO_CADENA);
+        if(confirmarAccionUsuario()== 1)
+        {
+            strcpy(empleadoData[indiceEnArrayEmpleadoAModificar].nombre, aux);
+            remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
+            formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].nombre);
+            printf("El nombre fue modificado exitosamente\n");
+        }
         break;
     case 2:
-        obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar apellido nuevamente: ", empleadoData[indiceEnArrayEmpleadoAModificar].apellido, TAMANIO_CADENA);
-        remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
-        formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
-        printf("El apellido fue modificado exitosamente\n");
+        obtenerCadena("Ingresa el apellido del empleado: ", "Error! Solo se pueden ingresar letras. Ingresar apellido nuevamente: ", aux, TAMANIO_CADENA);
+        if(confirmarAccionUsuario()== 1)
+        {
+            strcpy(empleadoData[indiceEnArrayEmpleadoAModificar].apellido, aux);
+            remmplazarSaltoPorEspacio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
+            formatearNombrePropio(empleadoData[indiceEnArrayEmpleadoAModificar].apellido);
+            printf("El apellido fue modificado exitosamente\n");
+        }
+        else
+        {
+            printf("Se cancelo la operacion\n");
+        }
         break;
     case 3:
-        empleadoData[indiceEnArrayEmpleadoAModificar].salario = pedirNumeroFlotante("Ingresar salario: ");
+        floatAux = pedirNumeroFlotante("Ingresar salario: ");
         while(empleadoData[indiceEnArrayEmpleadoAModificar].salario < 1){
-            empleadoData[indiceEnArrayEmpleadoAModificar].salario = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
+            floatAux = pedirNumeroFlotante("El salario debe ser mayor a 0. Ingresar salario nuevamente: ");
         }
-        printf("El salario fue modificado exitosamente\n");
+        if(confirmarAccionUsuario()== 1)
+        {
+            empleadoData[indiceEnArrayEmpleadoAModificar].salario = floatAux;
+            printf("El salario fue modificado exitosamente\n");
+        }
+        else
+        {
+            printf("Se cancelo la operacion\n");
+        }
         break;
     case 4:
-        empleadoData[indiceEnArrayEmpleadoAModificar].sector = pedirEntero("Ingresar sector: ");
-        printf("El sector fue modificado exitosamente\n");
+        intAux = pedirEntero("Ingresar sector: ");
+        if(confirmarAccionUsuario()== 1)
+        {
+            empleadoData[indiceEnArrayEmpleadoAModificar].sector = intAux;
+            printf("El sector fue modificado exitosamente\n");
+        }
+        else
+        {
+            printf("Se cancelo la operacion\n");
+        }
         break;
     case 5:
         menuEmpleados();
@@ -261,6 +299,7 @@ float sumarSalarios(empleadoEst empleadoData[], int T)
     }
     return sumaSalarios;
 }
+
 
 float calcularPromedioSalarios(float contadorEmpleados, float sumaSalarios)
 {
@@ -290,6 +329,7 @@ int contarEmpleados(empleadoEst empleadoData[], int T)
     }
     return cantidadEmpleados;
 }
+
 
 int contarEmpleadosSuperanSueldoPromedio(empleadoEst empleadoData[], int T, float salarioPromedio)
 {
