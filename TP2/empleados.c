@@ -136,6 +136,15 @@ void OrdenarEmpleadosPorNombre(empleadoEst empleadoData[], int T)
                 empleadoData[i] = empleadoData[j];
                 empleadoData[j] = aux;
             }
+            if(strcmp(empleadoData[i].apellido, empleadoData[j].apellido)==0)
+            {
+                if(empleadoData[i].sector > empleadoData[j].sector)
+                {
+                    aux = empleadoData[i];
+                    empleadoData[i] = empleadoData[j];
+                    empleadoData[j] = aux;
+                }
+            }
         }
     }
 }

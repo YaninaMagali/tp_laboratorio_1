@@ -10,7 +10,6 @@ int validarSiEsDigitoPositivo(char cadena[])
 
     i = 0;
 
-
     for(i=0; cadena[i] != '\0'; i++)
     {
         if(cadena[i] < '0' || cadena[i] > '9')

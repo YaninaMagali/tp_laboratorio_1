@@ -15,7 +15,7 @@
 
 1601147272 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
 
-1601479256 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
+1601480562 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -24,9 +24,9 @@
 	"pedirDatosBase.h"
 	"menuEmpleados.h"
 
-1601479275 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
+1601479342 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
 
-1601479279 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
+1601479985 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
 	<stdio.h>
 	<stdlib.h>
 	"menuEmpleados.h"
@@ -34,7 +34,7 @@
 	"empleados.h"
 	"menuEmpleados.h"
 
-1601293631 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.c
+1601479991 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
