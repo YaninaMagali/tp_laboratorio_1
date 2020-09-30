@@ -1,28 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 
-int validarSiEsDigito(int digito)
+int validarSiEsDigitoPositivo(char cadena[])
 {
+    int i;
     int esDigito;
 
-    if(digito != 0)
-    {
-        esDigito = 1;
+    i = 0;
 
-    }
-    else
+
+    for(i=0; cadena[i] != '\0'; i++)
     {
-        esDigito = 0;
+        if(cadena[i] < '0' || cadena[i] > '9')
+        {
+            esDigito = 0;
+            break;
+        }
+        else
+        {
+            esDigito = 1;
+        }
     }
     return esDigito;
-
 }
 
 int validarSiEsChar(char cadena[])
 {
     int i;
-    int esAlpha;
+    int esCaracter;
     int T;
 
     T = strlen(cadena)-1;
@@ -31,13 +38,13 @@ int validarSiEsChar(char cadena[])
     {
         if(isalpha(cadena[i])==0)
         {
-            esAlpha = 0;
+            esCaracter = 0;
             break;
         }
         else
         {
-            esAlpha = 1;
+            esCaracter = 1;
         }
     }
-    return esAlpha;
+    return esCaracter;
 }

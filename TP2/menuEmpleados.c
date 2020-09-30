@@ -13,9 +13,11 @@ void menuEmpleados(void)
     empleadoEst empleadosListado[T];//MODIFICAR TAMANIO ARRAY
     int filaLibreEnListaEmpleados;
     int ultimoId;
+    int idEmpleadoABorrarModificar;
     float sumaSalarios;
     int cantidadEmpleados;
     float promedioSalarios;
+    int cantidadEmpleadosSuperanSueldoPromedio;
 
     ultimoId = 0;
 
@@ -40,42 +42,63 @@ void menuEmpleados(void)
                 ultimoId = generarId(ultimoId);
                 empleadosListado[filaLibreEnListaEmpleados].id = ultimoId;
                 empleadosListado[filaLibreEnListaEmpleados].estaVacio = cambiarEstadoEstaVacio(empleadosListado[filaLibreEnListaEmpleados]);
+                printf("El usuario ingresado tiene ID %d\n", ultimoId);
             }
             break;
         case 2://MOD
             if(ultimoId == 0)
             {
-                printf("Todavia no ingresaste ningun empleado\n");
+                printf("No se cargaron empleados en el listado\n");
             }
             else
             {
-                modificarEmpleado(empleadosListado,T);
+                idEmpleadoABorrarModificar = pedirIdUsuarioModificar();
+                if(buscarIndiceEnArray(empleadosListado, T, idEmpleadoABorrarModificar) == -1)
+                {
+                    printf("No se encontro el empleado en el listado\n");
+                }
+                else
+                {
+                    modificarEmpleado(empleadosListado, idEmpleadoABorrarModificar);
+                }
             }
+
             break;
         case 3://BAJA
             if(ultimoId == 0)
             {
-                printf("Todavia no ingresaste ningun empleado\n");
+                printf("No se cargaron empleados en el listado\n");
             }
             else
             {
-                borrarEmpleado(empleadosListado, T);
+                idEmpleadoABorrarModificar = pedirIdUsuarioModificar();
+                if(buscarIndiceEnArray(empleadosListado, T, idEmpleadoABorrarModificar) == -1)
+                {
+                    printf("No se encontro el empleado en el listado\n");
+                }
+                else
+                {
+                    borrarEmpleado(empleadosListado, idEmpleadoABorrarModificar);
+                }
             }
             break;
         case 4://MOSTRAR
-            if(ultimoId == 0)
+            if(ultimoId == 0 || contarEmpleados(empleadosListado, T)==0)
             {
-                printf("Todavia no ingresaste ningun empleado\n");
+                printf("No hay empleados en el listado\n");
             }
             else
             {
                 sumaSalarios = sumarSalarios(empleadosListado, T);
                 cantidadEmpleados = contarEmpleados(empleadosListado, T);
                 promedioSalarios = calcularPromedioSalarios(cantidadEmpleados, sumaSalarios);
+                cantidadEmpleadosSuperanSueldoPromedio = contarEmpleadosSuperanSueldoPromedio(empleadosListado, T, promedioSalarios);
                 OrdenarEmpleadosPorNombre(empleadosListado,T);
                 mostrarEmpleado(empleadosListado, T);
                 printf("La suma de los salarios es %.2f\n", sumaSalarios);
                 printf("El promedio de los salarios es %.2f\n", promedioSalarios);
+                printf("La cantidad de empleados que superan el sueldo promedio es %d\n", cantidadEmpleadosSuperanSueldoPromedio);
+
 
             }
             break;
