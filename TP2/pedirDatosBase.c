@@ -26,7 +26,7 @@ int pedirEntero(char mensaje[])
  }
 
 
-/** \brief Pide al usuario que ingrese un numero por teclado
+/** \brief Pide al usuario que ingrese texto por teclado
  *
  * \param msj[] char - Recibe el mensaje para mostrar al usuario
  * \param mensajeError[] char - Recibe el mensaje de error para mostrar al usuario
