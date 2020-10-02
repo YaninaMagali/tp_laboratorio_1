@@ -114,6 +114,13 @@ int confirmarAccionUsuario(void)
     return continuar;
 }
 
+/** \brief - Pide al usuario ingresar una cadena de caracteres. Valida que la direccion de memoria sea valida y si encuenta un salto de linea lo reemplaza por un espacio
+ *
+ * \param cadena char* - Recibe lugar donde se va a guardar el numero ingresado
+ * \param TAMANIO_CADENA int - Recibe tamanio de la cadena
+ * \return int - - Devuelve resultado de la operacion: o operacion exitosa, sino -1
+ *
+ */
 int getCharBase(char* cadena, int TAMANIO_CADENA)
 {
     int retorno;
@@ -141,6 +148,12 @@ int getCharBase(char* cadena, int TAMANIO_CADENA)
 }
 
 
+/** \brief - Lee una cadena de caracteres. Si su contenido es numerico, lo convierte a tipo int y lo guarda en un espacio de memoria recibido por parametro
+ *
+ * \param numero int* - Recibe lugar donde se va a guardar el numero ingresado
+ * \return int - Devuelve resultado de la operacion: o operacion exitosa, sino -1
+ *
+ */
 int getNumberBase(int* numero)
 {
     int retorno = -1;
@@ -155,6 +168,17 @@ int getNumberBase(int* numero)
 }
 
 
+/** \brief - Pide al usuario ingresar numero por teclado
+ *
+ * \param numero int* - Recibe lugar donde se va a guardar el numero ingresado
+ * \param mensaje[] char - Recibe mensaje a mostrar al usuario
+ * \param mensajeError[] char - Recibe mensaje de error a mostrar al usuario
+ * \param minimo int - Recibe el valor minimo que puede ingresar
+ * \param maximo int - Recibe el valor maximo que puede ingresar
+ * \param reintentos int - Recibe la cantidad de veces que puede equivocarse
+ * \return int - Devuelve resultado de la operacion: o operacion exitosa, sino -1
+ *
+ */
 int pedirNumero(int* numero, char mensaje[], char mensajeError[], int minimo, int maximo, int reintentos)
 {
     int retorno = -1;
