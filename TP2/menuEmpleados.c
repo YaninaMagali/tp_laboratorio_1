@@ -26,7 +26,7 @@ void menuEmpleados(void)
 
     do
     {
-        if(pedirNumero(&opcion, "Selecciona una opcion\n 1. ALTA\n 2. MODIFICAR\n 3. BAJA\n 4. INFORMAR\n 0. SALIR\n", "Opcion invalida\n", 0, 5, 20) == 0)
+        if(pedirNumero(&opcion, "Selecciona una opcion\n 1. ALTA\n 2. MODIFICAR\n 3. BAJA\n 4. INFORMAR\n 5. SALIR\n", "Opcion invalida\n", 1, 5, 20) == 0)
         {
             switch(opcion)
             {
@@ -106,5 +106,5 @@ void menuEmpleados(void)
             }//Fin switch
     }
     }
-    while(opcion!=0);
+    while(opcion!=5);
 }
