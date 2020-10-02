@@ -1,21 +1,23 @@
 # depslib dependency file v1.0
-1601498237 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\main.c
+1601675111 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"menuEmpleados.h"
+	"pedirDatosBase.h"
 
 1600637302 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.h
 
-1601496198 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
+1601676004 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	<ctype.h>
 	"pedirDatosBase.h"
 	"validarTipoDato.h"
 
-1601490191 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
+1601675067 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\pedirdatosbase.h
 
-1601498213 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
+1601672314 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -26,7 +28,7 @@
 
 1601491047 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\empleados.h
 
-1601495251 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
+1601675904 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\menuempleados.c
 	<stdio.h>
 	<stdlib.h>
 	"menuEmpleados.h"
@@ -34,11 +36,12 @@
 	"empleados.h"
 	"menuEmpleados.h"
 
-1601495776 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.c
+1601674933 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
+	<limits.h>
 
-1601249407 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.h
+1601674961 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp2\validartipodato.h
 

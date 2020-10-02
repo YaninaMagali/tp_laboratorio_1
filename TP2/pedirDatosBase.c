@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include "pedirDatosBase.h"
 #include "validarTipoDato.h"
@@ -10,7 +11,7 @@
  * \return int - Devuelve el numero ingresado por el usuario
  *
  */
-int pedirEntero(char mensaje[])
+ int pedirEntero(char mensaje[])
  {
      int entero;
 
@@ -40,6 +41,7 @@ void obtenerCadena(char msj[], char mensajeError[], char cadena[], int TAMANIO_C
     printf(msj);
     fflush(stdin);
     fgets(cadena, TAMANIO_CADENA, stdin);
+    //while(validarSiEsChar(cadena)== 0)
     while(validarSiEsChar(cadena)== 0)
     {
         printf(mensajeError);
@@ -110,4 +112,67 @@ int confirmarAccionUsuario(void)
         continuar = 0;
     }
     return continuar;
+}
+
+int getCharBase(char* cadena, int TAMANIO_CADENA)
+{
+    int retorno;
+    char bufferString[2000];
+
+    retorno = -1;
+
+    if(cadena != NULL && TAMANIO_CADENA > 0)
+    {
+        fflush(stdin);
+        if(fgets(bufferString, sizeof(bufferString), stdin) != NULL)
+        {
+            if(bufferString[strlen(bufferString)-1] == '\n')
+            {
+                bufferString[strlen(bufferString)-1] = '\0';
+            }
+            if(strlen(bufferString) <= TAMANIO_CADENA)
+            {
+                strncpy(cadena, bufferString, TAMANIO_CADENA);
+                retorno = 0;
+            }
+        }
+    }
+    return retorno;
+}
+
+
+int getNumberBase(int* numero)
+{
+    int retorno = -1;
+    char bufferString[50];
+
+    if(numero != NULL && getCharBase(bufferString, sizeof(bufferString)) == 0 && validateIsNumber(bufferString, sizeof(bufferString)) == 0)//&& falta un if q vaidar si es numero
+    {
+       retorno = 0;
+       *numero = atoi(bufferString);
+    }
+    return retorno;
+}
+
+
+int pedirNumero(int* numero, char mensaje[], char mensajeError[], int minimo, int maximo, int reintentos)
+{
+    int retorno = -1;
+    int bufferInt;
+
+    do
+    {
+        printf("%s", mensaje);
+        if(getNumberBase(&bufferInt) == 0 && bufferInt >= minimo && bufferInt <= maximo)
+        {
+            retorno = 0;
+            *numero = bufferInt;
+            break;
+        }
+        printf("%s", mensajeError);
+        reintentos --;
+    }
+    while(reintentos >= 0);
+
+    return retorno;
 }
