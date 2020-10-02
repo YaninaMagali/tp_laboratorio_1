@@ -2,28 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
-int validarSiEsDigitoPositivo(char cadena[])
-{
-    int i;
-    int esDigito;
-
-    i = 0;
-
-    for(i=0; cadena[i] != '\0'; i++)
-    {
-        if(cadena[i] < '0' || cadena[i] > '9')
-        {
-            esDigito = 0;
-            break;
-        }
-        else
-        {
-            esDigito = 1;
-        }
-    }
-    return esDigito;
-}
+#include <limits.h>
 
 /** \brief valida que en la cadena ingresada este compuesta unicamente por letras
  *
@@ -52,4 +31,25 @@ int validarSiEsChar(char cadena[])
         }
     }
     return esCaracter;
+}
+
+
+int validateIsNumber(char* string, int stringSize)
+{
+    int result = 1; // TRUE
+    int i;
+
+    for(i = 0; i < stringSize && string[i] != '\0'; i++)
+    {
+        if(i == 0 && (string[0] == '+' || string[i] == '-'))
+        {
+            continue;//Vuelve al For
+        }
+        if(string[i] > 9 || string[i] < 0)
+        {
+          result = 0;
+          break;
+        }/*CONTINUE*/
+    }/*BREAK*/
+    return result;
 }
