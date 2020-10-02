@@ -34,6 +34,13 @@ int validarSiEsChar(char cadena[])
 }
 
 
+/** \brief - Lee una cadena de caracteres. Si su contenido es numerico, devuelve 0, sino -1. Contempla numeros negativos y positivos
+ *
+ * \param string char* - Recibe direccion de memoria donde se va a almacenar la cadena
+ * \param stringSize int - Recibe el tamanio de la cadena
+ * \return int - Devuelve resultado de la operacion: o operacion exitosa, sino -1
+ *
+ */
 int validateIsNumber(char* string, int stringSize)
 {
     int result = 1; // TRUE
