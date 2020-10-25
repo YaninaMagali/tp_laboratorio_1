@@ -18,7 +18,7 @@ int getString(char* pChar, int stringSize, char message[], char errorMessage[], 
         fgets(&string, stringSize, stdin);
         if(validateIsAlpha(&string)!= 0)
         {
-            //*pChar = string;
+            remmplazarSaltoPorEspacio(&string);
             strncpy(pChar, &string, stringSize);
             result = 0;
             break;
