@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "getData.h"
+//#include "getData.h"
 
 /** \brief valida que en la cadena ingresada este compuesta unicamente por letras
  * \param cadena[] char - Recibe un array de char
@@ -53,4 +53,23 @@ int validateIsNumber(char string[])
         }
     }
     return isDigit;
+}
+
+/** \brief - Reemplaza saltos de linea por espacios
+ *
+ * \param string[] char - Recibe una cadena de caracteres
+ * \return char - Devuelve la cadena con espacios en lugar de saltos
+ *
+ */
+char remmplazarSaltoPorEspacio(char string[])
+{
+    int i;
+    for(i=0;string[i] != '\0';i++)
+    {
+        if(string[i] == '\n')
+        {
+            string[i] = '\0';
+        }
+    }
+    return string[i];
 }

@@ -5,10 +5,10 @@ void addEmployeeToFile(sEmployee* employee)
 {
     FILE* pFile;
 
-    pFile = fopen("TP3Employees.txt","w");
+    pFile = fopen("TP3Employees.csv","w");
     if(!feof(pFile) && employee!= NULL)
     {
-        fwrite(employee, sizeof(employee), 1, pFile);
+        fprintf(pFile, "%d, %s, %s, %.2f", employee->employeeId, employee->employeeName, employee->employeeSurname, employee->employeeSalary);
     }
     fclose(pFile);
 

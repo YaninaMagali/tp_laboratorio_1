@@ -7,7 +7,7 @@
 
 1603660005 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdatabase.h
 
-1603660006 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdatabase.c
+1603664837 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdatabase.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -16,12 +16,11 @@
 
 1603655838 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\validatedatabase.h
 
-1603659317 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\validatedatabase.c
+1603664618 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\validatedatabase.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
-	"getData.h"
 
 1603653721 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdata.h
 
@@ -40,7 +39,7 @@
 
 1603655125 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employees.h
 
-1603658954 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employeesmenu.c
+1603667138 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employeesmenu.c
 	<stdio.h>
 	<stdlib.h>
 	"employees.h"
@@ -50,9 +49,15 @@
 
 1603656691 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employeemenu.h
 
-1603658903 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\addemployeetofile.c
+1603665314 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\addemployeetofile.c
 	<stdio.h>
 	"employees.h"
 
 1603658903 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\addemployeetofile.h
+
+1603667037 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getemployeesfromfile.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employees.h"
 
