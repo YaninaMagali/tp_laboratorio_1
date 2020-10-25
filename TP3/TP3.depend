@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1603654666 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdata.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getDataBase.h"
+
+1603660005 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdatabase.h
+
+1603660006 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdatabase.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"validateDataBase.h"
+
+1603655838 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\validatedatabase.h
+
+1603659317 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\validatedatabase.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"getData.h"
+
+1603653721 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\getdata.h
+
+1603657084 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"getData.h"
+	"employeeMenu.h"
+
+1603660035 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getDataBase.h"
+	"employees.h"
+
+1603655125 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employees.h
+
+1603658954 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employeesmenu.c
+	<stdio.h>
+	<stdlib.h>
+	"employees.h"
+	"employeeMenu.h"
+	"addEmployeeToFile.h"
+	"getDataBase.h"
+
+1603656691 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\employeemenu.h
+
+1603658903 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\addemployeetofile.c
+	<stdio.h>
+	"employees.h"
+
+1603658903 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3\addemployeetofile.h
+
