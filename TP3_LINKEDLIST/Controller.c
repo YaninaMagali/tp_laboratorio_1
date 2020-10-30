@@ -52,7 +52,20 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int result;
+    int index;
+
+    result = 0;
+
+    index = 3;//preguntar al usuario que elemento de la lista quiere agregar
+
+    if(pArrayListEmployee != NULL)
+    {
+        ll_remove(pArrayListEmployee, index-1);
+        result = 1;
+    }
+
+    return result;
 }
 
 
