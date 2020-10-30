@@ -44,7 +44,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 }
 
 //LLAMAR DESDE CONTROLADOR
-void addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
+int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
 {
     FILE* pFile;
     int len;
@@ -53,6 +53,9 @@ void addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
     char nombreAux[20];
     int horasAux;
     int sueldoAux;
+    int result;
+
+    result = 0;
 
     pFile = fopen(path,"w");
     len = ll_len(pArrayListEmployee);
@@ -65,8 +68,10 @@ void addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
             employee_getHorasTrabajadas(pEmployee, &horasAux);
             employee_getSueldo(pEmployee, &sueldoAux);
             fprintf(pFile, "%s, %d, %d \n", nombreAux, horasAux, sueldoAux);
+            result = 1;
         }
     }
     fclose(pFile);
+    return result;
 }
 

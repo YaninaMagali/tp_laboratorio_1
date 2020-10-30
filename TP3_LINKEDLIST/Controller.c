@@ -58,7 +58,25 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int result;
+    int len;
+    int i;
+    Employee* pEmployee;
+
+    result = 0;
+
+    if(pArrayListEmployee != NULL)
+    {
+        result = 1;
+        len = ll_len(pArrayListEmployee);
+        for(i = 0; i < len; i++)
+        {
+            pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+            printf("%d)%s %d %d\n", i+1, pEmployee->nombre, pEmployee->horasTrabajadas, pEmployee->sueldo);
+        }
+    }
+
+    return result;
 }
 
 
@@ -70,8 +88,14 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
+    int result;
+    result = 0;
 
-    return 1;
+    if(addEmployeesToFile(pArrayListEmployee, path)==1)
+    {
+        result = 1;
+    }
+    return result;
 }
 
 

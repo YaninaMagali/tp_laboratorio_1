@@ -2,4 +2,4 @@
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* path);
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee);
 
-void addEmployeesToFile(LinkedList* pArrayListEmployee, char* path);
+int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path);
