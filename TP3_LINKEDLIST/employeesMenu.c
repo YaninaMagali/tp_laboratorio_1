@@ -12,10 +12,7 @@ void employeeMenu(void)
     printf("TP 3: ADMINISTRACION DE EMPLEADOS!\n");
 
     LinkedList* employeeList;
-    Employee* pEmployee;
-    //FILE* pFile;
-    int i;
-    int len;
+    //Employee* pEmployee;
 
     // CREAR LISTA
     employeeList = ll_newLinkedList();
@@ -50,17 +47,12 @@ void employeeMenu(void)
             case 5:
                 break;
             case 6:
-                len = ll_len(employeeList);
-                for(i = 0; i < len; i++)
-                {
-                    pEmployee = (Employee*)ll_get(employeeList, i);
-                    printf("%d)%s %d %d\n", i+1, pEmployee->nombre, pEmployee->horasTrabajadas, pEmployee->sueldo);
-                }
+                controller_ListEmployee(employeeList);
                 break;
             case 7:
                 break;
             case 8:
-                addEmployeesToFile(employeeList, "TP3Employees.csv");
+                controller_saveAsText("TP3Employees.csv", employeeList);
                 break;
             case 9:
                 break;
