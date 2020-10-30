@@ -43,12 +43,50 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     return 1;
 }
 
-
+/*
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
-}
+    int result;
+    int option;
+    char charAux;
+    int intAux;
+    result = 0;
+    int len;
 
+    pedir empleado por numero en la lista (i + 1)
+    buscarlo en la lista (for + if). Si lo encuentro, lo guardo en pEmpleado
+    Hago un set del campo que necesito cambiar
+
+    len = ll_len(pArrayListEmployee);
+    for(i = 0; i < len; i++)
+    {
+
+    }
+
+
+    //MODIFICAR COMO PEDIR DATO
+    //option = pedirEntero(" 1. Modificar el nombre \n 2. Modificar horas trabajadas\n 3. Modificar salario\n 4. CANCELAR \n Elegi una opcion: ");
+    switch(option)
+    {
+    case 1:
+
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+
+    default:
+        printf("Opcion invalida\n");
+        break;
+    }
+
+
+    return result;
+}
+*/
 
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
@@ -71,10 +109,13 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    char nombreAux[20];
+    int horasAux;
+    int sueldoAux;
+    Employee* pEmployee;
     int result;
     int len;
     int i;
-    Employee* pEmployee;
 
     result = 0;
 
@@ -85,7 +126,12 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         for(i = 0; i < len; i++)
         {
             pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
-            printf("%d)%s %d %d\n", i+1, pEmployee->nombre, pEmployee->horasTrabajadas, pEmployee->sueldo);
+            //printf("%d)%s %d %d\n", i+1, pEmployee->nombre, pEmployee->horasTrabajadas, pEmployee->sueldo);
+            pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+            employee_getNombre(pEmployee, nombreAux);
+            employee_getHorasTrabajadas(pEmployee, &horasAux);
+            employee_getSueldo(pEmployee, &sueldoAux);
+            printf("%s, %d, %d \n", nombreAux, horasAux, sueldoAux);
         }
     }
 
