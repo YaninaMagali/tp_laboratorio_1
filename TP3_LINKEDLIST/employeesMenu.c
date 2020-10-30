@@ -45,6 +45,7 @@ void employeeMenu(void)
             case 4:
                 break;
             case 5:
+                controller_removeEmployee(employeeList);
                 break;
             case 6:
                 controller_ListEmployee(employeeList);
