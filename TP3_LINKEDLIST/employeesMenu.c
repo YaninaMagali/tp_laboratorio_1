@@ -12,37 +12,28 @@ void employeeMenu(void)
     printf("TP 3: ADMINISTRACION DE EMPLEADOS!\n");
 
     LinkedList* employeeList;
-    //Employee* pEmployee;
+    int menuOption;
 
-    // CREAR LISTA
     employeeList = ll_newLinkedList();
 
-/*
-    //MOSTRAR
-    len = ll_len(employeeList);
-    for(i = 0; i < len; i++)
-    {
-        pEmployee = (Employee*)ll_get(employeeList, i);
-        printf("%d)%s %d\n", i+1, pEmployee->name, pEmployee->hours);
-    }
-*/
-    int option;
+
     do
     {
-        if(getInt(&option, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,
+        if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,
                   "Opcion invalida\n", 1, 10, 20) == 0)
         {
-            switch(option)
+            switch(menuOption)
             {
             case 1:
                 controller_loadFromText("TP3Employees.csv", employeeList);
                 break;
-            case 2://MOD
+            case 2:
                 break;
             case 3:
                 controller_addEmployee(employeeList);
                 break;
             case 4:
+                controller_editEmployee(employeeList);
                 break;
             case 5:
                 controller_removeEmployee(employeeList);
@@ -60,5 +51,5 @@ void employeeMenu(void)
             }
         }
     }
-    while(option!=10);
+    while(menuOption!=10);
 }

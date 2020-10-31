@@ -115,7 +115,7 @@ int employee_setSueldo(Employee* this, char* sueldo)
 {
     int resultado;
     resultado = 0;
-
+    //VALIDACIONES
     if(this!= NULL && sueldo > 0)
     {
         this->sueldo = atoi(sueldo);
