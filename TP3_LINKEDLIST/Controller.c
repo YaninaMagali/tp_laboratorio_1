@@ -27,7 +27,22 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* pFile;
+    int result;
+
+    result = 0;
+
+    if(pArrayListEmployee != NULL
+       && path != NULL)
+    {
+        pFile = fopen(path, "rb");
+        if(parser_EmployeeFromBinary(pFile, pArrayListEmployee, path)== 1)
+        {
+            result = 1;
+        }
+    }
+
+    return result;
 }
 
 
@@ -38,8 +53,15 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     Employee* pEmployee;
     pEmployee = &employee;
 
+    char* name;
+    char hours[50];
+    char salary[50];
+
     //AGREGAR VALIDACIONES
-    pEmployee = employee_newParameters("Juan", "40", "54321");
+    getString(name, 50, "Nombre:", "Error...", 3);
+    getNumber(hours, 50, "Horas trabajadas:", "Error...", 3);
+    getNumber(salary, 50, "Salario:", "Error...", 3);
+    pEmployee = employee_newParameters(name, hours, salary);
     ll_add(pArrayListEmployee, pEmployee);
 
     return 1;
@@ -186,7 +208,19 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int result;
+    FILE* pFile;
+    result = 0;
+    pFile = fopen(path, "wb");
+
+    if(pArrayListEmployee != NULL
+       && path != NULL)
+    {
+        addEmployeesToBinaryFile(pFile, pArrayListEmployee, path);
+        result = 1;
+    }
+
+    return result;
 }
 
 /** \brief - Pide al usuario confirmacion para ejecutar una accion

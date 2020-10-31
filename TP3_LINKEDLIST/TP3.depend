@@ -267,7 +267,7 @@
 
 1603829213 c:\users\yanina diaz\desktop\tp3__\employeesmenu.h
 
-1604104404 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.c
+1604174727 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -279,20 +279,20 @@
 
 1603737112 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\linkedlist.h
 
-1603843306 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.h
+1604174224 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.h
 
-1604019445 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.h
+1604106798 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.h
 
-1604103367 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.c
+1604174234 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	"Employee.h"
 	"getDataBase.h"
 
-1603822603 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.h
+1604172468 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.h
 
-1604104335 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.c
+1604170174 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -306,26 +306,36 @@
 
 1603829213 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.h
 
-1603830581 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.c
+1604173740 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"getDataBase.h"
+	"validateDataBase.h"
 
-1603841354 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\main.c
+1604174729 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 	"EmployeesMenu.h"
+	"getDataBase.h"
 
-1604019446 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.c
+1604174242 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 	"Employee.h"
 	"parser.h"
+
+1604172160 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\validatedatabase.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1604172115 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\validatedatabase.h
 

@@ -35,13 +35,30 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* p
 
 }
 
-int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
+int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee, char* path)
 {
+    int result;
+    Employee* pEmployee;
 
-    return 1;
+    result = 0;
+
+    if(path != NULL
+       && pArrayListEmployee != NULL
+       && pFile!= NULL)
+       {
+           while(!feof(pFile))
+           {
+               fread(pEmployee, sizeof(Employee), 1, pFile);
+               ll_add(pArrayListEmployee, pEmployee);
+               result = 1;
+           }
+       }
+    fclose(pFile);
+
+    return result;
 }
 
-//LLAMAR DESDE CONTROLADOR
+
 int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
 {
     FILE* pFile;
@@ -71,5 +88,39 @@ int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
     }
     fclose(pFile);
     return result;
+}
+
+
+int addEmployeesToBinaryFile(FILE* pFile, LinkedList* pArrayListEmployee, char* path)
+{
+    int result;
+    int len;
+    int i;
+    Employee* pEmployee;
+
+    result = 0;
+
+    if(pFile != NULL
+       && pArrayListEmployee != NULL
+       && path != NULL)
+    {
+        len = ll_len(pArrayListEmployee);
+        //len = sizeof(pArrayListEmployee);
+        printf("LEN %d :\n", len);
+        while(!feof(pFile))
+        {
+            for(i = 0; i < len; i++)
+            {
+                pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+                fwrite(pEmployee, sizeof(Employee), 1, pFile);
+            }
+            //fwrite( a, sizeof(book), items, ptr);
+            //fwrite(pArrayListEmployee, sizeof(Employee), len, pFile);
+        }
+    }
+    fclose(pFile);
+
+    return result;
+
 }
 

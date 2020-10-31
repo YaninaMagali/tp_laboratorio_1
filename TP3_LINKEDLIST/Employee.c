@@ -14,7 +14,7 @@ Employee* employee_new()
 }
 
 //Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
-Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr, char* sueldoStr)
+Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr,char* sueldoStr)
 {
     Employee* pEmployee;
 
@@ -88,10 +88,17 @@ int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas)
     int resultado;
     resultado = 0;
 
-    if(this!= NULL && horasTrabajadas > 0)
+    if(this!= NULL)
     {
         this->horasTrabajadas = atoi(horasTrabajadas);
         resultado = 1;
+        /*
+        if(*horasTrabajadas > min && *horasTrabajadas < max)
+        {
+
+        }
+        */
+
     }
     return resultado;
 }

@@ -13,14 +13,15 @@ void employeeMenu(void)
 
     LinkedList* employeeList;
     int menuOption;
+    //int* pInt;
+    //pInt = &menuOption;
 
     employeeList = ll_newLinkedList();
-
+//getInt(pInt, "numero: ", "Error numero\n", 1, 500, 12);
 
     do
     {
-        if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,
-                  "Opcion invalida\n", 1, 10, 20) == 0)
+        if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,"Opcion invalida\n", 1, 10, 20) == 1)
         {
             switch(menuOption)
             {
@@ -28,6 +29,7 @@ void employeeMenu(void)
                 controller_loadFromText("TP3Employees.csv", employeeList);
                 break;
             case 2:
+                controller_loadFromBinary("data.bin", employeeList);
                 break;
             case 3:
                 controller_addEmployee(employeeList);
@@ -47,6 +49,7 @@ void employeeMenu(void)
                 controller_saveAsText("TP3Employees.csv", employeeList);
                 break;
             case 9:
+                controller_saveAsBinary("BIN_DATA_TEST", employeeList);
                 break;
             }
         }

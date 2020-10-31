@@ -11,6 +11,7 @@ typedef struct
 Employee* employee_new();
 //Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
 Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr, char* sueldoStr);
+//Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr, int minHs, int maxHs, char* sueldoStr);
 void employee_delete();
 
 int employee_setId(Employee* this,char* id);
@@ -19,6 +20,7 @@ int employee_getId(Employee* this,int* id);
 int employee_setNombre(Employee* this,char* nombre);
 int employee_getNombre(Employee* this,char* nombre);
 
+//int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas);
 int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 
