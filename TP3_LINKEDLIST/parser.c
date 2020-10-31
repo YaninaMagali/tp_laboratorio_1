@@ -27,10 +27,8 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* p
             pEmployee = employee_newParameters(nombreAux, horasTrabajadasAux, sueldoAux);
             ll_add(pArrayListEmployee, pEmployee);
             result = 1;
-            printf("\nLOG DENTRO DEL READ!!!! %s %d %d\n",pEmployee->nombre,pEmployee->horasTrabajadas, pEmployee->sueldo);
         }
        }
-
     fclose(pFile);
 
     return result;
