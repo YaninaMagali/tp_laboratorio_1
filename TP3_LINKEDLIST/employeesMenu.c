@@ -56,11 +56,14 @@ void employeeMenu(void)
                 }
                 else
                 {
-                    printf("La accion se realizo exitosamente");
+                    printf("La accion se realizo exitosamente\n");
                 }
                 break;
             case 6:
-                controller_ListEmployee(employeeList);
+                if(controller_ListEmployee(employeeList) == 0)
+                {
+                   printf("La lista esta vacia\n");
+                }
                 break;
             case 7:
                 controller_sortEmployee(employeeList);

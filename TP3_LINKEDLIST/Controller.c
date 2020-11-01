@@ -207,17 +207,21 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
     if(pArrayListEmployee != NULL)
     {
-        result = 1;
         len = ll_len(pArrayListEmployee);
-        for(i = 0; i < len; i++)
+        if(len > 0)
         {
-            pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
-            employee_getId(pEmployee, &idAux);
-            employee_getNombre(pEmployee, nameAux);
-            employee_getHorasTrabajadas(pEmployee, &hoursAux);
-            employee_getSueldo(pEmployee, &salaryAux);
-            printf("%d) %d, %s, %d, %d \n", i+1, idAux, nameAux, hoursAux, salaryAux);
+            for(i = 0; i < len; i++)
+            {
+                pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+                employee_getId(pEmployee, &idAux);
+                employee_getNombre(pEmployee, nameAux);
+                employee_getHorasTrabajadas(pEmployee, &hoursAux);
+                employee_getSueldo(pEmployee, &salaryAux);
+                printf("%d) %d, %s, %d, %d \n", i+1, idAux, nameAux, hoursAux, salaryAux);
+                result = 1;
+            }
         }
+
     }
 
     return result;
