@@ -12,14 +12,20 @@ void employeeMenu(void)
     printf("TP 3: ADMINISTRACION DE EMPLEADOS!\n");
 
     LinkedList* employeeList;
-
     int menuOption;
 
     employeeList = ll_newLinkedList();
 
+
     do
     {
             if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,"Opcion invalida\n", 1, 10, 20) == 1)
+
+
+    do
+    {
+        if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,
+                  "Opcion invalida\n", 1, 10, 20) == 0)
         {
             switch(menuOption)
             {
@@ -59,6 +65,22 @@ void employeeMenu(void)
                     printf("La accion se realizo exitosamente");
                 }
                 break;
+            case 3:
+                controller_addEmployee(employeeList);
+                break;
+            case 4:
+                controller_editEmployee(employeeList);
+                break;
+            case 5:
+                if(controller_removeEmployee(employeeList) == 0)
+                {
+                    printf("Accion no realizada. Revise si el numero ingresado es correcto\n");
+                }
+                else
+                {
+                    printf("La accion se realizo exitosamente");
+                }
+                break;
             case 6:
                 controller_ListEmployee(employeeList);
                 break;
@@ -77,6 +99,20 @@ void employeeMenu(void)
                 break;
             case 9:
                 controller_saveAsBinary("BIN_DATA_TEST.bin", employeeList);
+                break;
+            case 8:
+                if(controller_saveAsText("TP3Employees.csv", employeeList) == 1)
+                {
+                    printf("Datos guardados exitosamente\n");
+                }
+                else
+                {
+                    printf("No se pudieron guardar los datos\n");
+                }
+                break;
+                break;
+            case 9:
+                controller_saveAsBinary("BIN_DATA_TEST.bin", employeeList);			
                 break;
             }
         }

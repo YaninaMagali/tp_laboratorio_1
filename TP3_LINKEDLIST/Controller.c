@@ -43,10 +43,12 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
     }
 
     return result;
+
 }
 
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
+
 {
     int result;
     Employee employee;
@@ -155,7 +157,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             printf("Opcion invalida\n");
             break;
         }
-    }
 
     return result;
 }
@@ -177,8 +178,6 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
                 ll_remove(pArrayListEmployee, index-1);
                 result = 1;
             }
-        }
-    }
 
     return result;
 }
@@ -186,6 +185,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+<<<<<<< HEAD
     int idAux;
     char nameAux[20];
     int hoursAux;
@@ -246,6 +246,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     while(sortOption!=5);
 
     return result;
+
 }
 
 
@@ -277,6 +278,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     }
 
     return result;
+
 }
 
 /** \brief - Pide al usuario confirmacion para ejecutar una accion
@@ -325,3 +327,4 @@ int getLastId(LinkedList* pArrayListEmployee, char* id)
 
     return result;
 }
+

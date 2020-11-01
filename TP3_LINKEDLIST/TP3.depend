@@ -267,7 +267,11 @@
 
 1603829213 c:\users\yanina diaz\desktop\tp3__\employeesmenu.h
 
+<<<<<<< HEAD
 1604248456 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.c
+=======
+1604104404 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -279,20 +283,34 @@
 
 1603737112 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\linkedlist.h
 
+<<<<<<< HEAD
 1604246901 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.h
 
 1604106798 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.h
 
 1604246629 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.c
+=======
+1603843306 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.h
+
+1604019445 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.h
+
+1604103367 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employee.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	"Employee.h"
 	"getDataBase.h"
 
+<<<<<<< HEAD
 1604172468 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.h
 
 1604248266 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.c
+=======
+1603822603 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.h
+
+1604104335 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -302,28 +320,46 @@
 	"getDataBase.h"
 	"parser.h"
 
+<<<<<<< HEAD
 1604239807 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.h
 
 1603829213 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.h
 
 1604248504 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.c
+=======
+1604104128 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\controller.h
+
+1603829213 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\employeesmenu.h
+
+1603830581 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\getdatabase.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"getDataBase.h"
+<<<<<<< HEAD
 	"validateDataBase.h"
 
 1604246833 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\main.c
+=======
+
+1603841354 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\main.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 	"EmployeesMenu.h"
+<<<<<<< HEAD
 	"getDataBase.h"
 
 1604244828 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.c
+=======
+
+1604019446 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\parser.c
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -331,6 +367,7 @@
 	"Employee.h"
 	"parser.h"
 
+<<<<<<< HEAD
 1604172160 source:c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\validatedatabase.c
 	<stdio.h>
 	<stdlib.h>
@@ -339,3 +376,5 @@
 
 1604172115 c:\users\yanina diaz\documents\utn\programacion 1\tp1\tp_laboratorio_1\tp3_linkedlist\validatedatabase.h
 
+=======
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6

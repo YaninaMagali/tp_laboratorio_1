@@ -13,6 +13,7 @@ Employee* employee_new()
     return pEmployee;
 }
 
+
 Employee* employee_newParameters(char* idStr, char* nombreStr, char* horasTrabajadasStr,char* sueldoStr)
 {
     Employee* pEmployee;
@@ -20,7 +21,7 @@ Employee* employee_newParameters(char* idStr, char* nombreStr, char* horasTrabaj
     pEmployee = employee_new();
 
     if(pEmployee != NULL)
-    {//hacer anidads de if
+    {
         employee_setId(pEmployee, idStr);
         employee_setNombre(pEmployee, nombreStr);
         employee_setHorasTrabajadas(pEmployee, horasTrabajadasStr);
@@ -34,9 +35,9 @@ int employee_setId(Employee* this, char* id)
     int resultado;
     resultado = 0;
 
+
     if(this!= NULL)
     {
-
         this->id = atoi(id);
         resultado = 1;
     }
@@ -99,7 +100,6 @@ int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas)
 
         }
         */
-
     }
     return resultado;
 }
@@ -145,6 +145,7 @@ int employee_getSueldo(Employee* this,int* sueldo)
 
     return resultado;
 }
+<<<<<<< HEAD
 
 int employee_CompareById(Employee* e1, Employee* e2)
 {
@@ -261,3 +262,5 @@ int employee_CompareBySalary(Employee* e1, Employee* e2)
     }
     return result;
 }
+=======
+>>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
