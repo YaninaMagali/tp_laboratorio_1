@@ -63,7 +63,7 @@ void employeeMenu(void)
                 controller_ListEmployee(employeeList);
                 break;
             case 7:
-                //controller_sortEmployee(employeeList);
+                controller_sortEmployee(employeeList);
                 break;
             case 8:
                 if(controller_saveAsText("TP3Employees.csv", employeeList) == 1)
