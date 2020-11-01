@@ -210,6 +210,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         len = ll_len(pArrayListEmployee);
         if(len > 0)
         {
+            printf("Orden |  Id  |  Nombre   |   Horas   |   Salario\n");
             for(i = 0; i < len; i++)
             {
                 pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
@@ -217,7 +218,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
                 employee_getNombre(pEmployee, nameAux);
                 employee_getHorasTrabajadas(pEmployee, &hoursAux);
                 employee_getSueldo(pEmployee, &salaryAux);
-                printf("%d) %d, %s, %d, %d \n", i+1, idAux, nameAux, hoursAux, salaryAux);
+                printf("%1d) %5d, %11s, %12d, %13d $ \n", i+1, idAux, nameAux, hoursAux, salaryAux);
                 result = 1;
             }
         }
