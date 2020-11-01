@@ -76,7 +76,7 @@ void employeeMenu(void)
                 }
                 break;
             case 9:
-                controller_saveAsBinary("BIN_DATA_TEST", employeeList);
+                controller_saveAsBinary("BIN_DATA_Y.bin", employeeList);
                 break;
             }
         }
