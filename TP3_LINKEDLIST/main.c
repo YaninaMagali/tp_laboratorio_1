@@ -4,10 +4,7 @@
 #include "Controller.h"
 #include "Employee.h"
 #include "EmployeesMenu.h"
-<<<<<<< HEAD
 #include "getDataBase.h"
-=======
->>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
 
 /****************************************************
     Menu:
@@ -28,11 +25,5 @@ int main()
 {
 
     employeeMenu();
-<<<<<<< HEAD
-
-    return 0;
-    }
-=======
     return 0;
 }
->>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6

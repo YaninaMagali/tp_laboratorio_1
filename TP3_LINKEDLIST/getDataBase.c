@@ -38,7 +38,6 @@ int getBase(char* string, int stringSize)
     return result;
 }
 
-
 int getString(char* pChar, int stringSize, char message[], char errorMessage[], int attempts)
  {
     char string;
@@ -51,7 +50,6 @@ int getString(char* pChar, int stringSize, char message[], char errorMessage[], 
         printf(message);
         fflush(stdin);
         fgets(&string, stringSize, stdin);
-
         if(validateIsAlpha(&string) != 0)
         {
             remmplazarSaltoPorEspacio(&string);
@@ -89,10 +87,11 @@ int getInt(int* pNumber, char message[], char errorMessage[], int min, int max, 
         }
         printf(errorMessage);
         attempts--;
+     }
+     while(attempts > 0);
 
      return result;
  }
-
 
 int getNumber(char* pChar, int stringSize, char message[], char errorMessage[], int attempts)
  {
@@ -120,6 +119,7 @@ int getNumber(char* pChar, int stringSize, char message[], char errorMessage[], 
      return result;
  }
 
+ /*VALIDAR*/
 
 /** \brief - Reemplaza saltos de linea por espacios
  *

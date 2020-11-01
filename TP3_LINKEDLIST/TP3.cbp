@@ -59,6 +59,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="parser.h" />
+		<Unit filename="validateDataBase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="validateDataBase.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

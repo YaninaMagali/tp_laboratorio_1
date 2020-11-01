@@ -145,14 +145,10 @@ int employee_getSueldo(Employee* this,int* sueldo)
 
     return resultado;
 }
-<<<<<<< HEAD
 
 int employee_CompareById(Employee* e1, Employee* e2)
 {
-    /*
-    int* pId1;
-    int* pId2;
-    */
+
     int id1;
     int* pId1;
     int id2;
@@ -262,5 +258,3 @@ int employee_CompareBySalary(Employee* e1, Employee* e2)
     }
     return result;
 }
-=======
->>>>>>> 62c380ab7b047a4487f5fd1d6ed887ff99b870d6
