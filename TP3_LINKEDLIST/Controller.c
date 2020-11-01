@@ -47,24 +47,51 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
-//int controller_addEmployee(LinkedList* pArrayListEmployee, char* nombreStr, char* horasTrabajadasStr, char* sueldoStr)
 {
+    int result;
     Employee employee;
     Employee* pEmployee;
     pEmployee = &employee;
+    char id;
+    char* pId;
+    pId = &id;
 
-    char* name;
+    //char id[20];
+    char name[50];
     char hours[50];
     char salary[50];
+    result = 0;
 
-    //AGREGAR VALIDACIONES
-    getString(name, 50, "Nombre:", "Error...", 3);
-    getNumber(hours, 50, "Horas trabajadas:", "Error...", 3);
-    getNumber(salary, 50, "Salario:", "Error...", 3);
-    pEmployee = employee_newParameters(name, hours, salary);
-    ll_add(pArrayListEmployee, pEmployee);
+    if(ll_isEmpty(pArrayListEmployee) == 1)
+    {
+        result = 0;
+    }
+    else
+    {
+        if(getLastId(pArrayListEmployee, pId)== 1)
+        {
+            printf("id %d\n",id);
+            printf("&id %p\n",&id);
+            printf("pid %p\n",pId);
+            if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
+            {
+                if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
+                {
+                    if(getNumber(salary, 50, "Salario:", "Error...", 3)== 1)
+                    {
+                        pEmployee = employee_newParameters(pId, name, hours, salary);
+                        //pEmployee = employee_newParameters(*pId, name, hours, salary); // error compilacion
+                        //pEmployee = employee_newParameters(&id, name, hours, salary); // 0
+                        //pEmployee = employee_newParameters(id, name, hours, salary); // segm fault
+                        ll_add(pArrayListEmployee, pEmployee);
+                        result = 1;
+                    }
+                }
+            }
+        }
+    }
 
-    return 1;
+    return result;
 }
 
 
@@ -83,52 +110,51 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
     result = 0;
     pEmployee = &employee;
-    iEmployee = 3;// PEDIR EL DATO AL USUARIO
 
-    len = ll_len(pArrayListEmployee);
-    for(i = 0; i < len; i++)
+    if(getInt(&iEmployee, "Numero de orden del empleado a eliminar: ", "Error", 1, 99999, 3) == 1)
     {
-        if(iEmployee - 1 == i)
+        len = ll_len(pArrayListEmployee);
+        for(i = 0; i < len; i++)
         {
-            pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+            if(iEmployee - 1 == i)
+            {
+                pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+                break;
+            }
+        }
+
+
+        getInt(&editOption, " 1. Modificar el nombre \n 2. Modificar horas trabajadas\n 3. Modificar salario\n 4. CANCELAR \n Elegi una opcion: ", "Opcion invalida\n", 1, 4, 20);
+        switch(editOption)
+        {
+        case 1:
+            getString(nameAux, 20, "Nuevo nombre: ", "Error...\n", 3);
+            if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1 )
+            {
+                employee_setNombre(pEmployee, nameAux);
+                result = 1;
+            }
+            break;
+        case 2:
+            getString(hoursAux, 20, "Nuevo nombre: ", "Error...\n", 3);
+            if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+            {
+                employee_setSueldo(pEmployee, hoursAux);
+                result = 1;
+            }
+            break;
+        case 3:
+            getString(salaryAux, 20, "Nuevo nombre: ", "Error...\n", 3);
+            if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+            {
+                employee_setSueldo(pEmployee, salaryAux);
+                result = 1;
+            }
+            break;
+        default:
+            printf("Opcion invalida\n");
             break;
         }
-    }
-
-    //MODIFICAR COMO PEDIR DATO
-    getInt(&editOption, " 1. Modificar el nombre \n 2. Modificar horas trabajadas\n 3. Modificar salario\n 4. CANCELAR \n Elegi una opcion: ", "Opcion invalida\n", 1, 4, 20);
-    switch(editOption)
-    {
-    case 1:
-        //PEDIR NUEVO NOMBRE
-        strcpy(nameAux, "Ariel");
-        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1 )
-        {
-            employee_setNombre(pEmployee, nameAux);
-            result = 1;
-        }
-        break;
-    case 2:
-        //PEDIR NUEVAS HORAS
-        strcpy(hoursAux, "98");
-        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
-        {
-            employee_setSueldo(pEmployee, hoursAux);
-            result = 1;
-        }
-        break;
-    case 3:
-        //PEDIR NUEVO SALARIO
-        strcpy(salaryAux, "1500");
-        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
-        {
-            employee_setSueldo(pEmployee, salaryAux);
-            result = 1;
-        }
-        break;
-    default:
-        printf("Opcion invalida\n");
-        break;
     }
 
     return result;
@@ -142,14 +168,15 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     result = 0;
 
-    index = 3;//preguntar al usuario que elemento de la lista quiere agregar
-
-    if(pArrayListEmployee != NULL)
+    if(getInt(&index, "Numero de orden del usuario a eliminar", "Numero invalido", 1, 999999, 3) == 1)
     {
-        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+        if(pArrayListEmployee != NULL && index <= ll_len(pArrayListEmployee))
         {
-            ll_remove(pArrayListEmployee, index-1);
-            result = 1;
+            if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+            {
+                ll_remove(pArrayListEmployee, index-1);
+                result = 1;
+            }
         }
     }
 
@@ -159,6 +186,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    int idAux;
     char nameAux[20];
     int hoursAux;
     int salaryAux;
@@ -176,10 +204,11 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         for(i = 0; i < len; i++)
         {
             pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+            employee_getId(pEmployee, &idAux);
             employee_getNombre(pEmployee, nameAux);
             employee_getHorasTrabajadas(pEmployee, &hoursAux);
             employee_getSueldo(pEmployee, &salaryAux);
-            printf("%d) %s, %d, %d \n", i+1, nameAux, hoursAux, salaryAux);
+            printf("%d) %d, %s, %d, %d \n", i+1, idAux, nameAux, hoursAux, salaryAux);
         }
     }
 
@@ -189,7 +218,34 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int sortOption;
+    int result;
+    result = 0;
+
+    do
+    {
+            if(getInt(&sortOption, "\n 1. Ordenar por Id \n 2. Ordenar por nombre \n 3. Ordenar por horas \n 4. Ordenar por sueldo\n 5. Salir \n " ,"Opcion invalida\n", 1, 5, 20) == 1)
+        {
+            switch(sortOption)
+            {
+            case 1:
+                ll_sort(pArrayListEmployee, employee_CompareById, 0);
+                break;
+            case 2:
+                ll_sort(pArrayListEmployee, employee_CompareByName, 0);
+                break;
+            case 3:
+                ll_sort(pArrayListEmployee, employee_CompareByHours, 0);
+                break;
+            case 4:
+                ll_sort(pArrayListEmployee, employee_CompareBySalary, 0);
+                break;
+            }
+        }
+    }
+    while(sortOption!=5);
+
+    return result;
 }
 
 
@@ -242,6 +298,28 @@ int getUserAgreement(char* message)
 
     if(userAnswer == 's' || userAnswer == 'S')
     {
+        result = 1;
+    }
+
+    return result;
+}
+
+int getLastId(LinkedList* pArrayListEmployee, char* id)
+{
+    int index;
+    Employee* pEmployee;
+    int result;
+    int idAux;
+
+    result = 0;
+
+    if(pArrayListEmployee != NULL && ll_isEmpty(pArrayListEmployee) == 0)
+    {
+        index = (ll_len(pArrayListEmployee)-1);
+        pEmployee = ll_get(pArrayListEmployee,index);
+        employee_getId(pEmployee, &idAux);
+        idAux = idAux +1;
+        *id = idAux;
         result = 1;
     }
 

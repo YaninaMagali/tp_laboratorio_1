@@ -13,8 +13,7 @@ Employee* employee_new()
     return pEmployee;
 }
 
-//Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
-Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr,char* sueldoStr)
+Employee* employee_newParameters(char* idStr, char* nombreStr, char* horasTrabajadasStr,char* sueldoStr)
 {
     Employee* pEmployee;
 
@@ -22,6 +21,7 @@ Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr,char*
 
     if(pEmployee != NULL)
     {//hacer anidads de if
+        employee_setId(pEmployee, idStr);
         employee_setNombre(pEmployee, nombreStr);
         employee_setHorasTrabajadas(pEmployee, horasTrabajadasStr);
         employee_setSueldo(pEmployee, sueldoStr);
@@ -34,8 +34,9 @@ int employee_setId(Employee* this, char* id)
     int resultado;
     resultado = 0;
 
-    if(this!= NULL && id > 0)
+    if(this!= NULL)
     {
+
         this->id = atoi(id);
         resultado = 1;
     }
@@ -143,4 +144,120 @@ int employee_getSueldo(Employee* this,int* sueldo)
     }
 
     return resultado;
+}
+
+int employee_CompareById(Employee* e1, Employee* e2)
+{
+    /*
+    int* pId1;
+    int* pId2;
+    */
+    int id1;
+    int* pId1;
+    int id2;
+    int* pId2;
+    int result;
+    pId1 = &id1;
+    pId2 = &id2;
+
+    result = 0;
+
+    employee_getId(e1, pId1);
+    employee_getId(e2, pId2);
+
+    if( *pId1 > *pId2)
+    {
+        result = 1;
+    }
+    else
+    {
+        if(*pId1 < *pId2)
+        {
+            result = -1;
+        }
+    }
+    return result;
+}
+
+int employee_CompareByName(Employee* e1, Employee* e2)
+{
+    char nombreAux1[20];
+    char nombreAux2[20];
+    int result;
+
+    result = 0;
+    employee_getNombre(e1, nombreAux1);
+    employee_getNombre(e2, nombreAux2);
+
+    if(strcmp(nombreAux1, nombreAux2) > 0)
+    {
+        result = 1;
+    }
+    else
+    {
+        if(strcmp(nombreAux1, nombreAux2) < 0)
+        {
+            result = -1;
+        }
+    }
+    return result;
+}
+
+
+int employee_CompareByHours(Employee* e1, Employee* e2)
+{
+    int hs1;
+    int* pHs1;
+    int hs2;
+    int* pHs2;
+    int result;
+    pHs1 = &hs1;
+    pHs2 = &hs2;
+
+    result = 0;
+
+    employee_getHorasTrabajadas(e1, pHs1);
+    employee_getHorasTrabajadas(e2, pHs2);
+
+    if( *pHs1 > *pHs2)
+    {
+        result = 1;
+    }
+    else
+    {
+        if(*pHs1 < *pHs2)
+        {
+            result = -1;
+        }
+    }
+    return result;
+}
+
+int employee_CompareBySalary(Employee* e1, Employee* e2)
+{
+    int salary1;
+    int* pSalary1;
+    int salary2;
+    int* pSalary2;
+    int result;
+    pSalary1 = &salary1;
+    pSalary2 = &salary2;
+
+    result = 0;
+
+    employee_getSueldo(e1, pSalary1);
+    employee_getSueldo(e2, pSalary2);
+
+    if( *pSalary1 > *pSalary2)
+    {
+        result = 1;
+    }
+    else
+    {
+        if(*pSalary1 < *pSalary2)
+        {
+            result = -1;
+        }
+    }
+    return result;
 }

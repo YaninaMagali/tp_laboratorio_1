@@ -26,20 +26,5 @@ int main()
 
     employeeMenu();
 
-    /*
-    char string[50];
-    getNumber(string, 50, "Dato numerico:", "Error...", 3);
-
-    int num;
-    int* pInt;
-    pInt = &num;
-    char name[22];
-    printf("HOLA \n");
-    getBase(name, size);
-    getInt(pInt, "numero: ", "Error numero\n", 1, 500, 12);
-    getString(name, 22, "Dato: ", "Error main\n", 2);
-    printf("printf %s\n ", name);
-    printf("printf %d ", num);
-    */
     return 0;
     }

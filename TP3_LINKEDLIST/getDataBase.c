@@ -43,7 +43,7 @@ int getString(char* pChar, int stringSize, char message[], char errorMessage[], 
     char string;
     int result;
 
-    result = -1;
+    result = 0;
 
      do
      {
@@ -54,7 +54,7 @@ int getString(char* pChar, int stringSize, char message[], char errorMessage[], 
         {
             remmplazarSaltoPorEspacio(&string);
             strncpy(pChar, &string, stringSize);
-            result = 0;
+            result = 1;
             break;
         }
          printf(errorMessage);
@@ -98,7 +98,7 @@ int getNumber(char* pChar, int stringSize, char message[], char errorMessage[], 
     char string;
     int result;
 
-    result = -1;
+    result = 0;
 
      do
      {
@@ -108,7 +108,7 @@ int getNumber(char* pChar, int stringSize, char message[], char errorMessage[], 
         if(validateIsNumber(&string) == 1)
         {
             strncpy(pChar, &string, stringSize);
-            result = 0;
+            result = 1;
             break;
         }
          printf(errorMessage);

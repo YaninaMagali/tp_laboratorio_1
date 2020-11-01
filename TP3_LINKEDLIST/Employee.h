@@ -9,18 +9,15 @@ typedef struct
 }Employee;
 
 Employee* employee_new();
-//Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
-Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr, char* sueldoStr);
-//Employee* employee_newParameters(char* nombreStr, char* horasTrabajadasStr, int minHs, int maxHs, char* sueldoStr);
+Employee* employee_newParameters(char* idStr, char* nombreStr, char* horasTrabajadasStr,char* sueldoStr);
 void employee_delete();
 
-int employee_setId(Employee* this,char* id);
-int employee_getId(Employee* this,int* id);
+int employee_setId(Employee* this, char* id);
+int employee_getId(Employee* this, int* id);
 
 int employee_setNombre(Employee* this,char* nombre);
 int employee_getNombre(Employee* this,char* nombre);
 
-//int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas);
 int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 
@@ -29,5 +26,7 @@ int employee_getSueldo(Employee* this,int* sueldo);
 
 int employee_CompareByName(Employee* e1, Employee* e2);
 int employee_CompareById(Employee* e1, Employee* e2);
+int employee_CompareByHours(Employee* e1, Employee* e2);
+int employee_CompareBySalary(Employee* e1, Employee* e2);
 
 #endif // employee_H_INCLUDED
