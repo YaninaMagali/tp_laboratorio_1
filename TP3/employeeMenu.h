@@ -1,6 +1,0 @@
-#ifndef EMPLOYEEMENU_H_INCLUDED
-#define EMPLOYEEMENU_H_INCLUDED
-void employeeMenu(void);
-
-
-#endif // EMPLOYEEMENU_H_INCLUDED
