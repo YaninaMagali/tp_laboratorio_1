@@ -5,7 +5,7 @@
 #include "Employee.h"
 #include "parser.h"
 
-int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* path)
+int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int result;
     char idAux[50];
@@ -18,8 +18,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* p
 
     result = 0;
 
-    if(path != NULL
-       && pArrayListEmployee != NULL
+    if(pArrayListEmployee != NULL
        && pFile!= NULL)
        {
         while(!feof(pFile))
@@ -36,19 +35,20 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee, char* p
 
 }
 
-int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee, char* path)
+int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int result;
     Employee* pEmployee;
 
     result = 0;
 
-    if(path != NULL
-       && pArrayListEmployee != NULL
+    if(pArrayListEmployee != NULL
        && pFile!= NULL)
        {
            while(!feof(pFile))
            {
+               pEmployee = employee_new();
+               //AGREGAR VALIDACION
                fread(pEmployee, sizeof(Employee), 1, pFile);
                ll_add(pArrayListEmployee, pEmployee);
                result = 1;
@@ -60,9 +60,9 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee, char*
 }
 
 
-int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
+int addEmployeesToFile(LinkedList* pArrayListEmployee, FILE* pFile)
 {
-    FILE* pFile;
+
     int len;
     int i;
     Employee* pEmployee;
@@ -74,7 +74,7 @@ int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
 
     result = 0;
 
-    pFile = fopen(path,"w");
+
     len = ll_len(pArrayListEmployee);
     if(!feof(pFile) && pArrayListEmployee != NULL)
     {
@@ -94,7 +94,7 @@ int addEmployeesToFile(LinkedList* pArrayListEmployee, char* path)
 }
 
 
-int addEmployeesToBinaryFile(FILE* pFile, LinkedList* pArrayListEmployee, char* path)
+int addEmployeesToBinaryFile(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int result;
     int len;
@@ -104,11 +104,9 @@ int addEmployeesToBinaryFile(FILE* pFile, LinkedList* pArrayListEmployee, char* 
     result = 0;
 
     if(pFile != NULL
-       && pArrayListEmployee != NULL
-       && path != NULL)
+       && pArrayListEmployee != NULL)
     {
         len = ll_len(pArrayListEmployee);
-        printf("LEN %d :\n", len);
         for(i = 0; i < len; i++)
         {
             pEmployee = (Employee*)ll_get(pArrayListEmployee, i);

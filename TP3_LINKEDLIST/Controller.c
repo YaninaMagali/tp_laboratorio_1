@@ -16,7 +16,7 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 
     if(path != NULL
        && pArrayListEmployee != NULL
-       && parser_EmployeeFromText(pFile, pArrayListEmployee, path) == 1)
+       && parser_EmployeeFromText(pFile, pArrayListEmployee) == 1)
        {
            retorno = 1;
        }
@@ -36,7 +36,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
        && path != NULL)
     {
         pFile = fopen(path, "rb");
-        if(parser_EmployeeFromBinary(pFile, pArrayListEmployee, path)== 1)
+        if(parser_EmployeeFromBinary(pFile, pArrayListEmployee)== 1)
         {
             result = 1;
         }
@@ -62,34 +62,22 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char salary[50];
     result = 0;
 
-    if(ll_isEmpty(pArrayListEmployee) == 1)
+    if(getNewId(pArrayListEmployee, pId)== 1)
     {
-        result = 0;
-    }
-    else
-    {
-        if(getLastId(pArrayListEmployee, pId)== 1)
+        if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
         {
-            printf("id %d\n",id);
-            printf("&id %p\n",&id);
-            printf("pid %p\n",pId);
-            if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
+            if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
             {
-                if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
+                if(getNumber(salary, 50, "Salario:", "Error...", 3)== 1)
                 {
-                    if(getNumber(salary, 50, "Salario:", "Error...", 3)== 1)
-                    {
-                        pEmployee = employee_newParameters(pId, name, hours, salary);
-                        //pEmployee = employee_newParameters(*pId, name, hours, salary); // error compilacion
-                        //pEmployee = employee_newParameters(&id, name, hours, salary); // 0
-                        //pEmployee = employee_newParameters(id, name, hours, salary); // segm fault
-                        ll_add(pArrayListEmployee, pEmployee);
-                        result = 1;
-                    }
+                    pEmployee = employee_newParameters(pId, name, hours, salary);
+                    ll_add(pArrayListEmployee, pEmployee);
+                    result = 1;
                 }
             }
         }
     }
+
 
     return result;
 }
@@ -160,7 +148,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                     break;
                 }
             }
-
         }
     }
 
@@ -266,8 +253,11 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     int result;
     result = 0;
+    FILE* pFile;
 
-    if(addEmployeesToFile(pArrayListEmployee, path)==1)
+    pFile = fopen(path,"w");
+
+    if(addEmployeesToFile(pArrayListEmployee, pFile)==1)
     {
         result = 1;
     }
@@ -285,7 +275,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     if(pArrayListEmployee != NULL
        && path != NULL)
     {
-        addEmployeesToBinaryFile(pFile, pArrayListEmployee, path);
+        addEmployeesToBinaryFile(pFile, pArrayListEmployee);
         result = 1;
     }
 
@@ -317,10 +307,10 @@ int getUserAgreement(char* message)
     return result;
 }
 
-int getLastId(LinkedList* pArrayListEmployee, char* id)
+int getNewId(LinkedList* pArrayListEmployee, char* id)
 {
-    int index;
-    Employee* pEmployee;
+    //int index;
+    //Employee* pEmployee;
     int result;
     int idAux;
 
@@ -328,14 +318,36 @@ int getLastId(LinkedList* pArrayListEmployee, char* id)
 
     if(pArrayListEmployee != NULL && ll_isEmpty(pArrayListEmployee) == 0)
     {
-        index = (ll_len(pArrayListEmployee)-1);
-        pEmployee = ll_get(pArrayListEmployee,index);
-        employee_getId(pEmployee, &idAux);
-        idAux = idAux +1;
-        *id = idAux;
+        idAux = getMax(pArrayListEmployee) +1;
+        int length = snprintf( NULL, 0, "%d", idAux);
+        char* str = (char*)malloc( length + 1 );
+        snprintf( str, length + 1, "%d", idAux);
+        strcpy(id, str);
+        free(str);
         result = 1;
     }
 
     return result;
 }
 
+int getMax(LinkedList* pArrayListEmployee)
+{
+    Employee* pEmployee;
+    int idAux;
+    int max;
+    int i;
+    int len;
+
+    len = ll_len(pArrayListEmployee);
+    for(i = 0; i < len; i++)
+    {
+        pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+        employee_getId(pEmployee, &idAux);
+        if(i == 0 || idAux > max)
+        {
+            max = idAux;
+        }
+    }
+
+    return max;
+}
