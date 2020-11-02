@@ -27,7 +27,7 @@ void employeeMenu(void)
                 controller_loadFromText("TP3Employees.csv", employeeList);
                 break;
             case 2:
-                controller_loadFromBinary("data.bin", employeeList);
+                controller_loadFromBinary("BIN_DATA_TEST.bin", employeeList);
                 break;
             case 3:
                 if(controller_addEmployee(employeeList) == 1)

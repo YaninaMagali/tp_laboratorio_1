@@ -108,15 +108,11 @@ int addEmployeesToBinaryFile(FILE* pFile, LinkedList* pArrayListEmployee, char* 
        && path != NULL)
     {
         len = ll_len(pArrayListEmployee);
-        //len = sizeof(pArrayListEmployee);
         printf("LEN %d :\n", len);
-        while(!feof(pFile))
+        for(i = 0; i < len; i++)
         {
-            for(i = 0; i < len; i++)
-            {
-                pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
-                fwrite(pEmployee, sizeof(Employee), 1, pFile);
-            }
+            pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+            fwrite(pEmployee, sizeof(Employee), 1, pFile);
         }
     }
     fclose(pFile);
