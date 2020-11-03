@@ -206,7 +206,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     if(ll_isEmpty(pArrayListEmployee) == 0)
     {
-        if(getInt(&index, "Numero de orden del usuario a eliminar", "Numero invalido", 1, 999999, 3) == 1)
+        if(getInt(&index, "Numero de orden del usuario a eliminar: ", "Numero invalido\n", 1, 999999, 3) == 1)
         {
             if(pArrayListEmployee != NULL && index <= ll_len(pArrayListEmployee))
             {

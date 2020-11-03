@@ -21,7 +21,7 @@ void employeeMenu(void)
 
     do
     {
-            if(getInt(&menuOption, "Selecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,"Opcion invalida\n", 1, 10, 20) == 1)
+            if(getInt(&menuOption, "\nSelecciona una opcion\n 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto) \n 2. Cargar los datos de los empleados desde el archivo data.csv (modo binario) \n 3. Alta de empleado \n 4. Modificar datos de empleado\n 5. Baja de empleado \n 6. Listar empleados\n 7. Ordenar empleados \n 8. Guardar los datos de los empleados en el archivo data.csv (modo texto)\n 9. Guardar los datos de los empleados en el archivo data.csv (modo binario)\n 10. Salir\n" ,"Opcion invalida\n", 1, 10, 20) == 1)
         {
             switch(menuOption)
             {
@@ -36,37 +36,37 @@ void employeeMenu(void)
             case 3:
                 if(controller_addEmployee(employeeList, fileLoaded) == 1)
                 {
-                    printf("Carga exitosa\n");
+                    printf("\nCarga exitosa\n\n");
                 }
                 else
                 {
-                    printf("Carga no realizada. Intente cargando la lista en la opcion 1 del menu y vuelva a intentar7\n");
+                    printf("\nCarga no realizada. Intente cargando la lista en la opcion 1 del menu y vuelva a intentar\n");
                 }
                 break;
             case 4:
                 if(controller_editEmployee(employeeList) == 1)
                 {
-                    printf("Edicion exitosa\n");
+                    printf("\nEdicion exitosa\n");
                 }
                 else
                 {
-                    printf("Edicion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
+                    printf("\nEdicion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
                 }
                 break;
             case 5:
                 if(controller_removeEmployee(employeeList) == 0)
                 {
-                    printf("Accion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
+                    printf("\nAccion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
                 }
                 else
                 {
-                    printf("La accion se realizo exitosamente\n");
+                    printf("\nLa accion se realizo exitosamente\n");
                 }
                 break;
             case 6:
                 if(controller_ListEmployee(employeeList) == 0)
                 {
-                   printf("La lista esta vacia\n");
+                   printf("\nLa lista esta vacia\n");
                 }
                 break;
             case 7:
@@ -78,21 +78,21 @@ void employeeMenu(void)
             case 8:
                 if(controller_saveAsText("TP3Employees.csv", employeeList) == 1)
                 {
-                    printf("Datos guardados exitosamente\n");
+                    printf("\nDatos guardados exitosamente\n");
                 }
                 else
                 {
-                    printf("No se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
+                    printf("\nNo se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
                 }
                 break;
             case 9:
                 if(controller_saveAsBinary("BIN_DATA_TEST.bin", employeeList) == 1)
                 {
-                    printf("Datos guardados exitosamente\n");
+                    printf("\nDatos guardados exitosamente\n");
                 }
                 else
                 {
-                    printf("No se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
+                    printf("\nNo se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
                 }
                 break;
             }
