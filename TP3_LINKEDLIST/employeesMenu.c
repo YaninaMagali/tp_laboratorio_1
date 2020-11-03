@@ -26,12 +26,26 @@ void employeeMenu(void)
             switch(menuOption)
             {
             case 1:
-                //AGregar mensajes
-                controller_loadFromText("TP3Employees.csv", employeeList, fileLoaded);
-                fileLoaded = 1;
+                if(controller_loadFromText("TP3Employees.csv", employeeList, fileLoaded) == 1)
+                {
+                    fileLoaded = 1;
+                    printf("\nArchivo cargado\n");
+                }
+                else
+                {
+                    printf("\nNo se pudo cargar archivo\n");
+                }
                 break;
             case 2:
-                controller_loadFromBinary("BIN_DATA_TEST.bin", employeeList, fileLoaded);
+                if(controller_loadFromBinary("BIN_DATA_TEST.bin", employeeList, fileLoaded) == 1)
+                {
+                    fileLoaded = 1;
+                    printf("\nArchivo cargado\n");
+                }
+                else
+                {
+                    printf("\nNo se pudo cargar archivo\n");
+                }
                 fileLoaded = 1;
                 break;
             case 3:
