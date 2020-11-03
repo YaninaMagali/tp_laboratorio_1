@@ -136,7 +136,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
     if(ll_isEmpty(pArrayListEmployee) == 0)
     {
-        if(getInt(&iEmployee, "Numero de orden del empleado a eliminar: ", "Error", 1, 99999, 3) == 1)
+        controller_ListEmployee(pArrayListEmployee);
+        if(getInt(&iEmployee, "Numero de orden del empleado a modificar: ", "Error", 1, 99999, 3) == 1)
         {
             len = ll_len(pArrayListEmployee);
             if(iEmployee <= len)
@@ -207,6 +208,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     if(ll_isEmpty(pArrayListEmployee) == 0)
     {
+        controller_ListEmployee(pArrayListEmployee);
         if(getInt(&index, "Numero de orden del usuario a eliminar: ", "Numero invalido\n", 1, 999999, 3) == 1)
         {
             if(pArrayListEmployee != NULL && index <= ll_len(pArrayListEmployee))
