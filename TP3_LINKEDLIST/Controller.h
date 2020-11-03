@@ -8,7 +8,8 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee);
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
 int getUserAgreement(char* message);
-int getNewId(LinkedList* pArrayListEmployee, char* id);
-int getMaxId(LinkedList* pArrayListEmployee);
+int controller_setNewId(char* id);
+int controller_loadLastId(char* id);
+int controller_saveNewId(char* id);
 
 

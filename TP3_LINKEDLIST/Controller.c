@@ -28,7 +28,6 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int file
        && pArrayListEmployee != NULL
        && parser_EmployeeFromText(pFile, pArrayListEmployee) == 1)
        {
-
            result = 1;
        }
     fclose(pFile);
@@ -90,8 +89,10 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int fileLoaded)
     if(fileLoaded == 1
        && pArrayListEmployee != NULL)
     {
-        if(getNewId(pArrayListEmployee, pId) == 1)
+        //if(getNewId(pArrayListEmployee, pId) == 1)
+        if(controller_setNewId(pId) == 1)
         {
+            controller_saveNewId(pId);
             if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
             {
                 if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
@@ -403,43 +404,32 @@ int getUserAgreement(char* message)
     return result;
 }
 
-/** \brief Genera un id para un nuevo empleado obteniendo el mayor y sumandole 1
+/** \brief Genera un id para un nuevo empleado obteniendo el ultimo de un txt y le suma 1
  *
- * \param pArrayListEmployee LinkedList* Recibe el listado donde busca el mayor id
  * \param id char* Recibe donde va a asignar el nuevo id
  * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
  *
  */
-int getNewId(LinkedList* pArrayListEmployee, char* id)
+int controller_setNewId(char* id)
 {
     int result;
     int idAux;
-
     result = 0;
 
-    if(pArrayListEmployee != NULL)
+    if(id != NULL)
     {
-        if(ll_isEmpty(pArrayListEmployee) == 0)
-        {
-            idAux = getMaxId(pArrayListEmployee) +1;
-            int length = snprintf( NULL, 0, "%d", idAux);
-            char* str = (char*)malloc( length + 1 );
-            snprintf( str, length + 1, "%d", idAux);
-            strcpy(id, str);
-            free(str);
-            result = 1;
-        }
-        else
-        {
-            strcpy(id, "1");
-            result = 1;
-        }
-
+        controller_loadLastId(id);
+        idAux = atoi(id) + 1;
+        //Pasar a otra funcion
+        int length = snprintf( NULL, 0, "%d", idAux);
+        char* str = (char*)malloc( length + 1 );
+        snprintf( str, length + 1, "%d", idAux);
+        strcpy(id, str);
+        free(str);
+        result = 1;
     }
-
     return result;
 }
-
 
 /** \brief Recibe una lista y busca el maximo id
  *
@@ -469,4 +459,37 @@ int getMaxId(LinkedList* pArrayListEmployee)
     return max;
 }
 
+int controller_loadLastId(char* id)
+{
+    int result;
+    FILE* pFile;
+    result = 0;
+
+    if(id != NULL)
+    {
+        pFile = fopen("lastId.txt", "r");
+        fgets(id, sizeof(int), pFile);
+        fclose(pFile);
+        result = 1;
+    }
+    return result;
+}
+
+int controller_saveNewId(char* id)
+{
+    int result;
+    FILE* pFile;
+    int newId;
+    result = 0;
+
+    if(id != NULL)
+    {
+        newId = atoi(id);
+        pFile = fopen("lastId.txt", "w");
+        fprintf(pFile, "%d\n", newId );
+        fclose(pFile);
+        result = 1;
+    }
+    return result;
+}
 

@@ -26,6 +26,7 @@ void employeeMenu(void)
             switch(menuOption)
             {
             case 1:
+                //AGregar mensajes
                 controller_loadFromText("TP3Employees.csv", employeeList, fileLoaded);
                 fileLoaded = 1;
                 break;
