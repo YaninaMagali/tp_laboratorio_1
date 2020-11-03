@@ -38,6 +38,16 @@ int getBase(char* string, int stringSize)
     return result;
 }
 
+/** \brief Pide al usuario ingresar una cadena de caracteres. Si son solo letras se asigna a un puntero a char.
+ *
+ * \param pChar char* Recibe puntero a char donde se va a almacenar el dato ingresado por el usuario
+ * \param stringSize int Recibe tamanio del string
+ * \param message[] char Mensaje a mostrar al usuario
+ * \param errorMessage[] char Mensaje a mostrar al usuario en caso de error
+ * \param attempts int Cantidad de intentos
+ * \return int - - Devuelve resultado de la operacion: 1 operacion exitosa, sino 0
+ *
+ */
 int getString(char* pChar, int stringSize, char message[], char errorMessage[], int attempts)
  {
     char string;
@@ -65,6 +75,17 @@ int getString(char* pChar, int stringSize, char message[], char errorMessage[], 
      return result;
  }
 
+/** \brief Pide al usuario ingresar una numero como cadena de caracteres. Si son solo numeros, se convierte a int y se asigna a un puntero a int.
+ *
+ * \param pNumber int* Puntero a int donde se guarda el numero ingresado
+ * \param message[] char Mensaje a mostrar al usuario
+ * \param errorMessage[] char Mensaje a mostrar al usuario en caso de error
+ * \param min int Valor minimo
+ * \param max int Valor maximo
+ * \param attempts int
+ * \* \return int - - Devuelve resultado de la operacion: 1 operacion exitosa, sino 0
+ *
+ */
 int getInt(int* pNumber, char message[], char errorMessage[], int min, int max, int attempts)
 {
     char string[50];
@@ -93,6 +114,16 @@ int getInt(int* pNumber, char message[], char errorMessage[], int min, int max, 
      return result;
  }
 
+/** \brief Pide al usuario ingresar un numero como cadena de caracteres. Si son solo numeros se asigna a un puntero a char.
+ *
+ * \param pChar char* Recibe puntero a char donde se va a almacenar el dato ingresado por el usuario
+ * \param stringSize int Recibe tamanio del string
+ * \param message[] char Mensaje a mostrar al usuario
+ * \param errorMessage[] char Mensaje a mostrar al usuario en caso de error
+ * \param attempts int Cantidad de intentos
+ * \return int - - Devuelve resultado de la operacion: 1 operacion exitosa, sino 0
+ *
+ */
 int getNumber(char* pChar, int stringSize, char message[], char errorMessage[], int attempts)
  {
     char string;

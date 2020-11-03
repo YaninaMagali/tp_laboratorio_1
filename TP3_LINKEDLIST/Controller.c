@@ -7,32 +7,51 @@
 #include "getDataBase.h"
 #include "Controller.h"
 
-int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
-{
-    FILE* pFile;
-    int retorno;
-    retorno = 0;
-    pFile = fopen(path,"r");
-
-    if(path != NULL
-       && pArrayListEmployee != NULL
-       && parser_EmployeeFromText(pFile, pArrayListEmployee) == 1)
-       {
-           retorno = 1;
-       }
-
-    return retorno;
-}
-
-
-int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
+/** \brief Abre un archivo de texto, lo lee y luego lo cierra
+ *
+ * \param path char* Recibe el path del archivo
+ * \param pArrayListEmployee LinkedList* Recibe una lista donde se guardan los datos leidos
+ * \param fileLoaded int Flag que indica si el archivo ya fue abierto previamente
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
+int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int fileLoaded)
 {
     FILE* pFile;
     int result;
 
     result = 0;
+    pFile = fopen(path,"r");
 
-    if(pArrayListEmployee != NULL
+    if(fileLoaded == 0
+       && path != NULL
+       && pArrayListEmployee != NULL
+       && parser_EmployeeFromText(pFile, pArrayListEmployee) == 1)
+       {
+
+           result = 1;
+       }
+    fclose(pFile);
+    return result;
+}
+
+/** \brief Abre un archivo binario, lo lee y luego lo cierra
+ *
+ * \param path char* Recibe el path del archivo
+ * \param pArrayListEmployee LinkedList* Recibe una lista donde se guardan los datos leidos
+ * \param fileLoaded int Flag que indica si el archivo ya fue abierto previamente
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
+int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee, int fileLoaded)
+{
+    FILE* pFile = NULL;
+    int result;
+
+    result = 0;
+
+    if(fileLoaded == 0
+       && pArrayListEmployee != NULL
        && path != NULL)
     {
         pFile = fopen(path, "rb");
@@ -46,43 +65,60 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 }
 
 
-int controller_addEmployee(LinkedList* pArrayListEmployee)
+/** \brief Pide al usuario datos del nuevo empleado y si son validos lo agrega a la lista
+ *
+ * \param pArrayListEmployee LinkedList* Recibe la lista a la que se agrega el empleado
+ * \param fileLoaded int Recibe un flag que indica si cargo el archivo al menos una vez
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
+int controller_addEmployee(LinkedList* pArrayListEmployee, int fileLoaded)
 {
     int result;
     Employee employee;
     Employee* pEmployee;
-    pEmployee = &employee;
     char id;
     char* pId;
-    pId = &id;
-
-    //char id[20];
     char name[50];
     char hours[50];
     char salary[50];
-    result = 0;
 
-    if(getNewId(pArrayListEmployee, pId)== 1)
+    result = 0;
+    pEmployee = &employee;
+    pId = &id;
+
+    if(fileLoaded == 1
+       && pArrayListEmployee != NULL)
     {
-        if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
+        if(getNewId(pArrayListEmployee, pId) == 1)
         {
-            if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
+            if(getString(name, 50, "Nombre:", "Error...", 3) == 1)
             {
-                if(getNumber(salary, 50, "Salario:", "Error...", 3)== 1)
+                if(getNumber(hours, 50, "Horas trabajadas:", "Error...", 3) == 1)
                 {
-                    pEmployee = employee_newParameters(pId, name, hours, salary);
-                    ll_add(pArrayListEmployee, pEmployee);
-                    result = 1;
+                    if(getNumber(salary, 50, "Salario:", "Error...", 3)== 1)
+                    {
+                        pEmployee = employee_newParameters(pId, name, hours, salary);
+                        ll_add(pArrayListEmployee, pEmployee);
+                        result = 1;
+                    }
                 }
             }
-        }
     }
 
+    }
 
     return result;
 }
 
 
+/** \brief Pide al usuario el empleado a modificar. Si lo encuentra le muestra un submenu para que elija que dato modificar.
+ *  Una vez ingresado el nuevo valor, se le muestra al usuario una pregunta de confirmacion. Si la respuesta es S, realiza el cambio, sino cancela.
+ *
+ * \param pArrayListEmployee LinkedList* Recibe la lista donde va a buscar el empleado a modificar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     int result;
@@ -93,11 +129,9 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     char salaryAux[90];
     int i;
     int len;
-    Employee employee;
-    Employee* pEmployee;
+    Employee* pEmployee = NULL;
 
     result = 0;
-    pEmployee = &employee;
 
     if(ll_isEmpty(pArrayListEmployee) == 0)
     {
@@ -156,6 +190,13 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 }
 
 
+/** \brief Pide al usuario el empleado a eliminar. Si lo se le muestra al usuario una pregunta de confirmacion. Si la
+ *   respuesta es S, elimina, sino cancela.
+ *
+ * \param pArrayListEmployee LinkedList* Recibe la lista donde busca el empleado a eliminar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
     int result;
@@ -163,14 +204,17 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     result = 0;
 
-    if(getInt(&index, "Numero de orden del usuario a eliminar", "Numero invalido", 1, 999999, 3) == 1)
+    if(ll_isEmpty(pArrayListEmployee) == 0)
     {
-        if(pArrayListEmployee != NULL && index <= ll_len(pArrayListEmployee))
+        if(getInt(&index, "Numero de orden del usuario a eliminar", "Numero invalido", 1, 999999, 3) == 1)
         {
-            if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+            if(pArrayListEmployee != NULL && index <= ll_len(pArrayListEmployee))
             {
-                ll_remove(pArrayListEmployee, index-1);
-                result = 1;
+                if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+                {
+                    ll_remove(pArrayListEmployee, index-1);
+                    result = 1;
+                }
             }
         }
     }
@@ -179,13 +223,19 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 }
 
 
+/** \brief Muestra la lista de empleados.
+ *
+ * \param pArrayListEmployee LinkedList* Recibe el listado que va a mostrar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
     int idAux;
     char nameAux[20];
     int hoursAux;
     int salaryAux;
-    Employee* pEmployee;
+    Employee* pEmployee = NULL;
     int result;
     int len;
     int i;
@@ -216,69 +266,115 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 }
 
 
+/** \brief Recibe una lista de empleados. Si no esta vacia le da la opcion de ordenarlos por cada uno de sus campos de forma ascendente
+ *
+ * \param pArrayListEmployee LinkedList* Recibe la lista de empleados a ordenar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int sortOption;
     int result;
     result = 0;
 
-    do
+    if(ll_isEmpty(pArrayListEmployee) == 0)
     {
-            if(getInt(&sortOption, "\n 1. Ordenar por Id \n 2. Ordenar por nombre \n 3. Ordenar por horas \n 4. Ordenar por sueldo\n 5. Salir \n " ,"Opcion invalida\n", 1, 5, 20) == 1)
+        do
         {
-            switch(sortOption)
+                if(getInt(&sortOption, "\n 1. Ordenar por Id \n 2. Ordenar por nombre \n 3. Ordenar por horas \n 4. Ordenar por sueldo\n 5. Salir \n " ,"Opcion invalida\n", 1, 5, 20) == 1)
             {
-            case 1:
-                ll_sort(pArrayListEmployee, employee_CompareById, 0);
-                break;
-            case 2:
-                ll_sort(pArrayListEmployee, employee_CompareByName, 0);
-                break;
-            case 3:
-                ll_sort(pArrayListEmployee, employee_CompareByHours, 0);
-                break;
-            case 4:
-                ll_sort(pArrayListEmployee, employee_CompareBySalary, 0);
-                break;
+                switch(sortOption)
+                {
+                case 1:
+                    ll_sort(pArrayListEmployee, employee_CompareById, 1);
+                    result = 1;
+                    break;
+                case 2:
+                    ll_sort(pArrayListEmployee, employee_CompareByName, 1);
+                    result = 1;
+                    break;
+                case 3:
+                    ll_sort(pArrayListEmployee, employee_CompareByHours, 1);
+                    result = 1;
+                    break;
+                case 4:
+                    ll_sort(pArrayListEmployee, employee_CompareBySalary, 1);
+                    result = 1;
+                    break;
+                }
             }
         }
+        while(sortOption!=5);
     }
-    while(sortOption!=5);
+    else
+    {
+        result = 0;
+    }
 
     return result;
 }
 
 
+/** \brief Abre un archivo de texto, guarda el listado y lo cierra
+ *
+ * \param path char* Recibe el path del archivo
+ * \param pArrayListEmployee LinkedList* Recibe el listado a guardar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     int result;
     result = 0;
-    FILE* pFile;
+    FILE* pFile = NULL;
 
-    pFile = fopen(path,"w");
-
-    if(addEmployeesToFile(pArrayListEmployee, pFile)==1)
+    if(path != NULL
+       && pArrayListEmployee != NULL)
     {
-        result = 1;
+        if(ll_isEmpty(pArrayListEmployee) == 0)
+        {
+            if(getUserAgreement("Para guardar ingresar S, sino cualquier tecla\n") == 1)
+            {
+                pFile = fopen(path,"w");
+                if(addEmployeesToFile(pArrayListEmployee, pFile)==1)
+                {
+                    result = 1;
+                }
+            }
+        }
     }
+    fclose(pFile);
     return result;
 }
 
-
+/** \brief Abre un archivo binario, guarda el listado y lo cierra
+ *
+ * \param path char* Recibe el path del archivo
+ * \param pArrayListEmployee LinkedList* Recibe el listado a guardar
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
     int result;
-    FILE* pFile;
+    FILE* pFile = NULL;
     result = 0;
-    pFile = fopen(path, "wb");
 
     if(pArrayListEmployee != NULL
        && path != NULL)
     {
-        addEmployeesToBinaryFile(pFile, pArrayListEmployee);
-        result = 1;
+        if(ll_isEmpty(pArrayListEmployee) == 0)
+        {
+            if(getUserAgreement("Para guardar ingresar S, sino cualquier tecla\n") == 1)
+            {
+                pFile = fopen(path, "wb");
+                addEmployeesToBinaryFile(pFile, pArrayListEmployee);
+                result = 1;
+            }
+        }
     }
-
+    fclose(pFile);
     return result;
 }
 
@@ -307,32 +403,53 @@ int getUserAgreement(char* message)
     return result;
 }
 
+/** \brief Genera un id para un nuevo empleado obteniendo el mayor y sumandole 1
+ *
+ * \param pArrayListEmployee LinkedList* Recibe el listado donde busca el mayor id
+ * \param id char* Recibe donde va a asignar el nuevo id
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
 int getNewId(LinkedList* pArrayListEmployee, char* id)
 {
-    //int index;
-    //Employee* pEmployee;
     int result;
     int idAux;
 
     result = 0;
 
-    if(pArrayListEmployee != NULL && ll_isEmpty(pArrayListEmployee) == 0)
+    if(pArrayListEmployee != NULL)
     {
-        idAux = getMax(pArrayListEmployee) +1;
-        int length = snprintf( NULL, 0, "%d", idAux);
-        char* str = (char*)malloc( length + 1 );
-        snprintf( str, length + 1, "%d", idAux);
-        strcpy(id, str);
-        free(str);
-        result = 1;
+        if(ll_isEmpty(pArrayListEmployee) == 0)
+        {
+            idAux = getMaxId(pArrayListEmployee) +1;
+            int length = snprintf( NULL, 0, "%d", idAux);
+            char* str = (char*)malloc( length + 1 );
+            snprintf( str, length + 1, "%d", idAux);
+            strcpy(id, str);
+            free(str);
+            result = 1;
+        }
+        else
+        {
+            strcpy(id, "1");
+            result = 1;
+        }
+
     }
 
     return result;
 }
 
-int getMax(LinkedList* pArrayListEmployee)
+
+/** \brief Recibe una lista y busca el maximo id
+ *
+ * \param pArrayListEmployee LinkedList* Recibe una lista
+ * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ *
+ */
+int getMaxId(LinkedList* pArrayListEmployee)
 {
-    Employee* pEmployee;
+    Employee* pEmployee = NULL;
     int idAux;
     int max;
     int i;
@@ -351,3 +468,5 @@ int getMax(LinkedList* pArrayListEmployee)
 
     return max;
 }
+
+

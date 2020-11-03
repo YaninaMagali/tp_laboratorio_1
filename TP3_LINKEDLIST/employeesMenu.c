@@ -11,11 +11,13 @@ void employeeMenu(void)
 {
     printf("TP 3: ADMINISTRACION DE EMPLEADOS!\n");
 
-    LinkedList* employeeList;
+    LinkedList* employeeList = NULL;
 
     int menuOption;
+    int fileLoaded;
 
     employeeList = ll_newLinkedList();
+    fileLoaded = 0;
 
     do
     {
@@ -24,19 +26,21 @@ void employeeMenu(void)
             switch(menuOption)
             {
             case 1:
-                controller_loadFromText("TP3Employees.csv", employeeList);
+                controller_loadFromText("TP3Employees.csv", employeeList, fileLoaded);
+                fileLoaded = 1;
                 break;
             case 2:
-                controller_loadFromBinary("BIN_DATA_TEST.bin", employeeList);
+                controller_loadFromBinary("BIN_DATA_TEST.bin", employeeList, fileLoaded);
+                fileLoaded = 1;
                 break;
             case 3:
-                if(controller_addEmployee(employeeList) == 1)
+                if(controller_addEmployee(employeeList, fileLoaded) == 1)
                 {
                     printf("Carga exitosa\n");
                 }
                 else
                 {
-                    printf("Carga no realizada. Intente cargando antes, la lista en la opcion 1 del menu\n");
+                    printf("Carga no realizada. Intente cargando la lista en la opcion 1 del menu y vuelva a intentar7\n");
                 }
                 break;
             case 4:
@@ -46,13 +50,13 @@ void employeeMenu(void)
                 }
                 else
                 {
-                    printf("Edicion no realizada\n");
+                    printf("Edicion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
                 }
                 break;
             case 5:
                 if(controller_removeEmployee(employeeList) == 0)
                 {
-                    printf("Accion no realizada. Revise si el numero ingresado es correcto\n");
+                    printf("Accion no realizada. Revise si el numero ingresado es correcto o si hay datos en la lista\n");
                 }
                 else
                 {
@@ -66,7 +70,10 @@ void employeeMenu(void)
                 }
                 break;
             case 7:
-                controller_sortEmployee(employeeList);
+                if(controller_sortEmployee(employeeList)== 0)
+                {
+                    printf("La lista esta vacia\n");
+                }
                 break;
             case 8:
                 if(controller_saveAsText("TP3Employees.csv", employeeList) == 1)
@@ -75,11 +82,18 @@ void employeeMenu(void)
                 }
                 else
                 {
-                    printf("No se pudieron guardar los datos\n");
+                    printf("No se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
                 }
                 break;
             case 9:
-                controller_saveAsBinary("BIN_DATA_TEST.bin", employeeList);
+                if(controller_saveAsBinary("BIN_DATA_TEST.bin", employeeList) == 1)
+                {
+                    printf("Datos guardados exitosamente\n");
+                }
+                else
+                {
+                    printf("No se pudieron guardar los datos. Chequee si la lista no esta vacia\n");
+                }
                 break;
             }
         }
