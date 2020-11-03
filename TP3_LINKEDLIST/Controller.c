@@ -151,38 +151,38 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                     }
                 }
 
-
-                getInt(&editOption, " 1. Modificar el nombre \n 2. Modificar horas trabajadas\n 3. Modificar salario\n 4. CANCELAR \n Elegi una opcion: ", "Opcion invalida\n", 1, 4, 20);
-                switch(editOption)
+                do
                 {
-                case 1:
-                    getString(nameAux, 20, "Nuevo nombre: ", "Error...\n", 3);
-                    if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1 )
+                    getInt(&editOption, " 1. Modificar el nombre \n 2. Modificar horas trabajadas\n 3. Modificar salario\n 4. CANCELAR \n Elegi una opcion: ", "Opcion invalida\n", 1, 4, 20);
+                    switch(editOption)
                     {
-                        employee_setNombre(pEmployee, nameAux);
-                        result = 1;
+                    case 1:
+                        getString(nameAux, 20, "Nuevo nombre: ", "Error...\n", 3);
+                        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1 )
+                        {
+                            employee_setNombre(pEmployee, nameAux);
+                            result = 1;
+                        }
+                        break;
+                    case 2:
+                        getNumber(hoursAux, 20, "Nueva cantidad de horas: ", "Error...\n", 3);
+                        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+                        {
+                            employee_setHorasTrabajadas(pEmployee, hoursAux);
+                            result = 1;
+                        }
+                        break;
+                    case 3:
+                        getNumber(salaryAux, 20, "Nuevo salario: ", "Error...\n", 3);
+                        if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
+                        {
+                            employee_setSueldo(pEmployee, salaryAux);
+                            result = 1;
+                        }
+                        break;
                     }
-                    break;
-                case 2:
-                    getNumber(hoursAux, 20, "Nueva cantidad de horas: ", "Error...\n", 3);
-                    if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
-                    {
-                        employee_setSueldo(pEmployee, hoursAux);
-                        result = 1;
-                    }
-                    break;
-                case 3:
-                    getNumber(salaryAux, 20, "Nuevo salario: ", "Error...\n", 3);
-                    if(getUserAgreement("Para continuar ingresar S, para cancelar presionar cualquier tecla \n") == 1)
-                    {
-                        employee_setSueldo(pEmployee, salaryAux);
-                        result = 1;
-                    }
-                    break;
-                default:
-                    printf("Opcion invalida\n");
-                    break;
                 }
+                while(editOption!=4);
             }
         }
     }
