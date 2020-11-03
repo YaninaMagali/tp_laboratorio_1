@@ -1,6 +1,0 @@
-#ifndef ADDEMPLOYEETOFILE_H_INCLUDED
-#define ADDEMPLOYEETOFILE_H_INCLUDED
-
-void addEmployeeToFile(sEmployee* employee);
-
-#endif // ADDEMPLOYEETOFILE_H_INCLUDED
