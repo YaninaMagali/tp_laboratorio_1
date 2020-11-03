@@ -229,8 +229,10 @@ int employee_getSueldo(Employee* this,int* sueldo)
  * \return int Si el id del primero es mayor al segundo, devuelve 1, si es al reves, devuelve -1, si son iguales devuelve 0
  *
  */
-int employee_CompareById(Employee* e1, Employee* e2)
+int employee_CompareById(void* e1, void* e2)
 {
+    e1 = (Employee*)e1;
+    e2 = (Employee*)e2;
     int id1;
     int* pId1;
     pId1 = &id1;
@@ -265,8 +267,10 @@ int employee_CompareById(Employee* e1, Employee* e2)
  * \return int Si el id del primero es mayor al segundo, devuelve 1, si es al reves, devuelve -1, si son iguales devuelve 0
  *
  */
-int employee_CompareByName(Employee* e1, Employee* e2)
+int employee_CompareByName(void* e1, void* e2)
 {
+    e1 = (Employee*)e1;
+    e2 = (Employee*)e2;
     char nombreAux1[20];
     char nombreAux2[20];
     int result;
@@ -297,8 +301,10 @@ int employee_CompareByName(Employee* e1, Employee* e2)
  * \return int Si el id del primero es mayor al segundo, devuelve 1, si es al reves, devuelve -1, si son iguales devuelve 0
  *
  */
-int employee_CompareByHours(Employee* e1, Employee* e2)
+int employee_CompareByHours(void* e1, void* e2)
 {
+    e1 = (Employee*)e1;
+    e2 = (Employee*)e2;
     int hs1;
     int* pHs1;
     int hs2;
@@ -333,8 +339,10 @@ int employee_CompareByHours(Employee* e1, Employee* e2)
  * \return int Si el id del primero es mayor al segundo, devuelve 1, si es al reves, devuelve -1, si son iguales devuelve 0
  *
  */
-int employee_CompareBySalary(Employee* e1, Employee* e2)
+int employee_CompareBySalary(void* e1, void* e2)
 {
+    e1 = (Employee*)e1;
+    e2 = (Employee*)e2;
     int salary1;
     int* pSalary1;
     int salary2;

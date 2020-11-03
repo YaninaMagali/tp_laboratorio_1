@@ -30,10 +30,10 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 int employee_setSueldo(Employee* this, char* sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
-int employee_CompareByName(Employee* e1, Employee* e2);
-int employee_CompareById(Employee* e1, Employee* e2);
-int employee_CompareByHours(Employee* e1, Employee* e2);
-int employee_CompareBySalary(Employee* e1, Employee* e2);
+int employee_CompareByName(void* e1, void* e2);
+int employee_CompareById(void* e1, void* e2);
+int employee_CompareByHours(void* e1, void* e2);
+int employee_CompareBySalary(void* e1, void* e2);
 
 
 #endif // employee_H_INCLUDED
