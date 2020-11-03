@@ -433,34 +433,12 @@ int controller_setNewId(char* id)
     return result;
 }
 
-/** \brief Recibe una lista y busca el maximo id
+/** \brief Carga el ultimo id guardado en el txt
  *
- * \param pArrayListEmployee LinkedList* Recibe una lista
- * \return int Devuelve un int que indica el resutado de la operacion: 1 exitosa, 0 no realizada.
+ * \param id char* Recibe donde va a cargar el ultimo id
+ * \return int Devuelve 1 si se pudo cargar, sino 0
  *
  */
-int getMaxId(LinkedList* pArrayListEmployee)
-{
-    Employee* pEmployee = NULL;
-    int idAux;
-    int max;
-    int i;
-    int len;
-
-    len = ll_len(pArrayListEmployee);
-    for(i = 0; i < len; i++)
-    {
-        pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
-        employee_getId(pEmployee, &idAux);
-        if(i == 0 || idAux > max)
-        {
-            max = idAux;
-        }
-    }
-
-    return max;
-}
-
 int controller_loadLastId(char* id)
 {
     int result;
@@ -477,6 +455,12 @@ int controller_loadLastId(char* id)
     return result;
 }
 
+/** \brief Guarda el ultimo idEmpleado en un txt
+ *
+ * \param id char* Recibe el id a guardar
+ * \return int Devuelve 1 si se pudo guardar, sino 0
+ *
+ */
 int controller_saveNewId(char* id)
 {
     int result;
