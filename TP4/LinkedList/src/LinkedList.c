@@ -152,14 +152,17 @@ int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
     int indice = 0;
-    Node* actual;
 
-
-
+    if(this != NULL)
+    {
+        indice = ll_len(this);
+        returnAux = addNode(this, indice, pElement);
+    }
     return returnAux;
 }
-//  ******* OJO CORREGIR *******************
-/** \brief Permite realizar el test de la funcion addNode la cual es privada
+
+
+/** \brief Obtiene el elemento de una lista
  *
  * \param this LinkedList* Puntero a la lista
  * \param nodeIndex int Ubicacion del elemento a obtener
@@ -170,7 +173,16 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
+    Node* auxNode;
 
+    if(this != NULL && index >= 0 && index < ll_len(this))
+    {
+        auxNode = getNode(this, index);
+        if(auxNode != NULL)
+        {
+           returnAux = auxNode->pElement;
+        }
+    }
 
     return returnAux;
 }
