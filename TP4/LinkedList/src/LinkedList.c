@@ -522,13 +522,16 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
+    int from;
+    int to;
+
+    from = 0;
 
     if(this != NULL)
     {
-
+        to = ll_len(this);
+        cloneArray = ll_subList(this, from, to);
     }
-
-
     return cloneArray;
 }
 
