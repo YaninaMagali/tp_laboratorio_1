@@ -495,16 +495,19 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 
     len = ll_len(this);
 
-    if(this != NULL && to <= len)
+    if(this != NULL != NULL && from >= 0 && to <= len)
     {
-        for(i = from; i < to; i++)
+        cloneArray = ll_newLinkedList();
+        if(cloneArray != NULL)
         {
-            pElement = ll_get(this, i);
-            ll_add(cloneArray, pElement);
+            for(i = from; i < to; i++)
+            {
+                pElement = ll_get(this, i);
+                ll_add(cloneArray, pElement);
+            }
         }
+
     }
-
-
     return cloneArray;
 }
 
