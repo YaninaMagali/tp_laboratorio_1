@@ -287,6 +287,11 @@ int ll_deleteLinkedList(LinkedList* this)
 {
     int returnAux = -1;
 
+    if(this != NULL)
+    {
+        free(this);
+        returnAux = 0;
+    }
 
     return returnAux;
 }
