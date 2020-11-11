@@ -453,7 +453,26 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     int returnAux = -1;
     int i;
     Node* nodo;
+    int len;
+    void* pElement;
 
+    len = ll_len(this2);
+
+    if(this != NULL && this2 != NULL)
+    {
+        for(i = 0; i < len; i++)
+        {
+            pElement = ll_get(this2, i);
+            if(ll_contains(this, pElement) == 1)
+            {
+                returnAux = 1;
+            }
+            else
+            {
+                returnAux = 0;
+            }
+        }
+    }
 
     return returnAux;
 }
