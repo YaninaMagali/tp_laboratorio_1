@@ -460,16 +460,15 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 
     if(this != NULL && this2 != NULL)
     {
+        returnAux = 1;
         for(i = 0; i < len; i++)
         {
+            returnAux = 1;
             pElement = ll_get(this2, i);
-            if(ll_contains(this, pElement) == 1)
-            {
-                returnAux = 1;
-            }
-            else
+            if(ll_contains(this, pElement) == 0)
             {
                 returnAux = 0;
+                break;
             }
         }
     }
@@ -520,6 +519,11 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
+
+    if(this != NULL)
+    {
+
+    }
 
 
     return cloneArray;
