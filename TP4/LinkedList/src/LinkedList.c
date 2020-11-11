@@ -492,6 +492,18 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
     LinkedList* cloneArray = NULL;
     int i;
     void* pElement;
+    int len;
+
+    len = ll_len(this);
+
+    if(this != NULL && to <= len)
+    {
+        for(i = from; i < to; i++)
+        {
+            pElement = ll_get(this, i);
+            ll_add(cloneArray, pElement);
+        }
+    }
 
 
     return cloneArray;
