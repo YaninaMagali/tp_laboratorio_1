@@ -309,9 +309,24 @@ int ll_indexOf(LinkedList* this, void* pElement)
     int returnAux = -1;
     int i;
     Node* nodo;
+    int len;
+    void* auxElement;
 
+    len = ll_len(this);
+    auxElement = NULL;
 
-
+    if(this != NULL)
+    {
+        for(i = 0; i< len; i++)
+        {
+            auxElement = ll_get(this, i);
+            if(auxElement == pElement)
+            {
+                returnAux = i;
+                break;
+            }
+        }
+    }
     return returnAux;
 }
 
@@ -354,7 +369,11 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
 
-
+    if(this != NULL && pElement != NULL && index >= 0 && index < ll_len(this))
+    {
+        addNode(this, index, pElement);
+        returnAux = 0;
+    }
 
     return returnAux;
 }
