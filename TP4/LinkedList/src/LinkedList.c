@@ -229,7 +229,7 @@ int ll_remove(LinkedList* this,int index)
     int returnAux = -1;
     Node* prev;
     Node* next;
-    //int indice = 0;
+
     prev = getNode(this, index-1);
     next = getNode(this, index+1);
 
@@ -243,7 +243,6 @@ int ll_remove(LinkedList* this,int index)
         {
             prev -> pNextNode = next;
         }
-
 
         this -> size--;
         returnAux = 0;
@@ -263,8 +262,14 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
-    Node* nodo;
-    int i;
+
+
+    if(this != NULL)
+    {
+        this->size = 0;
+        this->pFirstNode = NULL;
+        returnAux = 0;
+    }
 
 
     return returnAux;
