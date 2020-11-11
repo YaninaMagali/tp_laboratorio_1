@@ -424,6 +424,17 @@ int ll_contains(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
 
+    if(this != NULL)
+    {
+        if(ll_indexOf(this, pElement)!= -1) // indexOf porque ya busca un elemento, y si esta devuelve distinto de -1
+        {
+            returnAux = 1;
+        }
+        else
+        {
+            returnAux = 0;
+        }
+    }
 
     return returnAux;
 }
