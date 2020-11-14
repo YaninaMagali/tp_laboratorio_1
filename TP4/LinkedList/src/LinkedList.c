@@ -558,9 +558,9 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
         len = ll_len(this);
         for(i = 0; i < len-1; i++)
         {
-            e1 = ll_get(this, i);
             for(j = i+1; j < len; j++)
             {
+                e1 = ll_get(this, i);
                 e2 = ll_get(this, j);
                 if(order == 0 && pFunc(e1, e2) == -1) //[0] Indica orden descendente. en comprareBy, si e1>e2, return 1
                 {
