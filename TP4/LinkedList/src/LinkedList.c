@@ -400,7 +400,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
-    Node* nodo;
+    //Node* nodo;
 
     if(this != NULL)
     {
@@ -452,7 +452,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
     int returnAux = -1;
     int i;
-    Node* nodo;
+    //Node* nodo;
     int len;
     void* pElement;
 
@@ -495,7 +495,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 
     len = ll_len(this);
 
-    if(this != NULL != NULL && from >= 0 && to <= len)
+    if(this != NULL && from >= 0 && to <= len)
     {
         cloneArray = ll_newLinkedList();
         if(cloneArray != NULL)
@@ -539,7 +539,7 @@ LinkedList* ll_clone(LinkedList* this)
 /** \brief Ordena los elementos de la lista utilizando la funcion criterio recibida como parametro
  * \param pList LinkedList* Puntero a la lista
  * \param pFunc (*pFunc) Puntero a la funcion criterio
- * \param order int  [1] Indica orden ascendente - [0] Indica orden descendente
+ * \param order int  [1] Indica orden ascendente -
  * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
                                 ( 0) Si ok
  */
@@ -547,7 +547,38 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 {
     int returnAux =-1;
     void* pAux;
+    int len;
+    int i;
+    int j;
+    void* e1;
+    void* e2;
 
+    if(this != NULL && pFunc != NULL && (order == 0 || order == 1))
+    {
+        len = ll_len(this);
+        for(i = 0; i < len-1; i++)
+        {
+            e1 = ll_get(this, i);
+            for(j = i+1; j < len; j++)
+            {
+                e2 = ll_get(this, j);
+                if(order == 0 && pFunc(e1, e2) == -1) //[0] Indica orden descendente. en comprareBy, si e1>e2, return 1
+                {
+                    pAux = e1;
+                    ll_set(this, i, e2);
+                    ll_set(this, j, pAux);
+                }
+                if(order == 1 && pFunc(e1, e2) == 1) //[1] Indica orden ascendente. en comprareBy, si e1<e2, return -1
+                {
+                    pAux = e1;
+                    ll_set(this, i, e2);
+                    ll_set(this, j, pAux);
+                }
+            }
+        }
+
+        returnAux = 0;
+    }
 
 
     return returnAux;
